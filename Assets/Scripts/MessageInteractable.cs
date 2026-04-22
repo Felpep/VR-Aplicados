@@ -22,6 +22,11 @@ public class MessageInteractable : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        ResetVisuals();
+    }
+
     // Llama a este método desde el evento "On Select" de tu Meta Interactable (ej. RayInteractable)
     public void OnPointerClick()
     {
@@ -35,11 +40,21 @@ public class MessageInteractable : MonoBehaviour
         }
 
         // Avisamos al GameManager
-        PrototypeGameManager.Instance.ToggleMessageMark(messageID, isMarked);
+        CaseManager.Instance.ToggleMessageMark(messageID);
+        //PrototypeGameManager.Instance.ToggleMessageMark(messageID, isMarked);
     }
 
-    public void OnHover()
+    private void ResetVisuals()
     {
-        Debug.Log("Mensaje Hover");
+        isMarked = false;
+        if (meshRenderer != null && normalMaterial != null)
+        {
+            meshRenderer.material = normalMaterial;
+        }
     }
+
+    //public void OnHover()
+    //{
+    //    Debug.Log("Mensaje Hover");
+    //}
 }
