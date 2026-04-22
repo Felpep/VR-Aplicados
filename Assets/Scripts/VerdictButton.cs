@@ -15,14 +15,17 @@ public class VerdictButton : MonoBehaviour
     {
         if (hasBeenPressed) return;
 
-        hasBeenPressed = true;
-        Debug.Log($"Botón físico presionado: {(isBlockButton ? "BLOQUEAR" : "ARCHIVAR")}");
+        if (!PrototypeGameManager.Instance.ActiveCase.HasAnyMarked())
+        {
+            Debug.Log("Marcá al menos un mensaje antes de enviar.");
+            return;
+        }
 
-        // Enviar la decisión al GameManager
+        hasBeenPressed = true;
         PrototypeGameManager.Instance.SubmitVerdict(isBlockButton);
     }
 
-
+    public void ResetButton() => hasBeenPressed = false;
     public void OnHover()
     {
         Debug.Log("Mensaje Hover");

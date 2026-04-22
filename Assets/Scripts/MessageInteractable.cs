@@ -5,13 +5,17 @@ public class MessageInteractable : MonoBehaviour
     [Header("Datos del Mensaje")]
     [Tooltip("ID único para este mensaje (ej. 0, 1, 2).")]
     public int messageID;
+    public bool isSuspicious = false; 
+
 
     [Header("Visuales")]
     public Material normalMaterial;
     public Material markedMaterial; // Material color amarillo
     private MeshRenderer meshRenderer;
 
+
     private bool isMarked = false;
+    public bool IsMarked => isMarked; 
 
     private void Awake()
     {
@@ -33,9 +37,6 @@ public class MessageInteractable : MonoBehaviour
         {
             meshRenderer.material = isMarked ? markedMaterial : normalMaterial;
         }
-
-        // Avisamos al GameManager
-        PrototypeGameManager.Instance.ToggleMessageMark(messageID, isMarked);
     }
 
     public void OnHover()
