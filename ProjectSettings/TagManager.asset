@@ -29,6 +29,7 @@ TagManager:
   - QDSUITextInputField
   - SamplesInfoPanel
   - QDSUIToggleCheckboxRadio
+  - Apple
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - Grabbable
   - Hand
   - Interactive
-  - 
+  - Apple
   - 
   - 
   - 
