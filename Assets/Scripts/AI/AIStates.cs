@@ -111,11 +111,11 @@ public class ChaseState : BaseAIState
     {
         _lostTargetTimer -= Time.deltaTime;
 
-#if UNITY_EDITOR
-        // Dibuja un texto flotante sobre la cabeza de la IA en el editor indicando el tiempo de escape restante
-        Vector3 labelPosition = owner.transform.position + Vector3.up * 2.2f;
-        UnityEditor.Handles.Label(labelPosition, $"Perdiendo rastro: {_lostTargetTimer:F1}s");
-#endif
+//#if UNITY_EDITOR
+//        // Dibuja un texto flotante sobre la cabeza de la IA en el editor indicando el tiempo de escape restante
+//        Vector3 labelPosition = owner.transform.position + Vector3.up * 2.2f;
+//        UnityEditor.Handles.Label(labelPosition, $"Perdiendo rastro: {_lostTargetTimer:F1}s");
+//#endif
 
         if (_lostTargetTimer <= 0f)
         {
