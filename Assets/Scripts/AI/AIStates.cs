@@ -74,7 +74,6 @@ public class ChaseState : BaseAIState
     private float _lostTargetTimer;
     private const float LostTargetTimeout = 3f;
 
-    // Optimización de Pathfinding: evita llamadas masivas a SetDestination
     private float _pathCountdown;
     private const float PathRefreshRate = 0.15f;
 
@@ -87,14 +86,12 @@ public class ChaseState : BaseAIState
 
     public override void UpdateState(AIStateMachine owner)
     {
-        // Forzamos una validación visual limpia desacoplada del cache de percepción
         if (owner.DetectedTarget == null)
         {
             HandleTargetLost(owner);
             return;
         }
 
-        // Si hay target válido en memoria, evaluamos el cooldown para actualizar NavMesh
         _lostTargetTimer = LostTargetTimeout;
         _pathCountdown -= Time.deltaTime;
 
@@ -113,6 +110,12 @@ public class ChaseState : BaseAIState
     private void HandleTargetLost(AIStateMachine owner)
     {
         _lostTargetTimer -= Time.deltaTime;
+
+#if UNITY_EDITOR
+        // Dibuja un texto flotante sobre la cabeza de la IA en el editor indicando el tiempo de escape restante
+        Vector3 labelPosition = owner.transform.position + Vector3.up * 2.2f;
+        UnityEditor.Handles.Label(labelPosition, $"Perdiendo rastro: {_lostTargetTimer:F1}s");
+#endif
 
         if (_lostTargetTimer <= 0f)
         {

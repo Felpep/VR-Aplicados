@@ -28,6 +28,9 @@ public class EnemyPerception : MonoBehaviour
     [Header("Noise Detection")]
     [SerializeField] private float _noiseDetectionRadius = 10f;
 
+    [Header("Debug")]
+    [SerializeField] private bool _showGizmos = true;
+
     // ── Referencias internas ──────────────────────────────────────────────────
     private AIStateMachine _stateMachine;
 
@@ -170,4 +173,76 @@ public class EnemyPerception : MonoBehaviour
     {
         OnNoiseEmitted?.Invoke(origin, radius);
     }
+
+
+
+
+
+
+
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (!_showGizmos || _eyeTransform == null) return;
+
+        // 1. Dibujar rango de audición (Círculo Azul plano en los pies)
+        UnityEditor.Handles.color = new Color(0f, 0.5f, 1f, 0.15f);
+        UnityEditor.Handles.DrawSolidDisc(transform.position, Vector3.up, _noiseDetectionRadius);
+        UnityEditor.Handles.color = Color.blue;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, _noiseDetectionRadius);
+
+        // 2. Dibujar cono de visión (Color dinámico según estado de alerta)
+        bool isChasing = _stateMachine != null && _stateMachine.IsInState<ChaseState>();
+        Color coneColor = isChasing ? new Color(1f, 0f, 0f, 0.1f) : new Color(1f, 1f, 0f, 0.05f);
+        Color wireColor = isChasing ? Color.red : Color.yellow;
+
+        Vector3 leftBoundary = Quaternion.Euler(0f, -_visionAngle * 0.5f, 0f) * _eyeTransform.forward;
+
+        UnityEditor.Handles.color = coneColor;
+        UnityEditor.Handles.DrawSolidArc(_eyeTransform.position, Vector3.up, leftBoundary, _visionAngle, _visionRange);
+        UnityEditor.Handles.color = wireColor;
+        UnityEditor.Handles.DrawWireArc(_eyeTransform.position, Vector3.up, leftBoundary, _visionAngle, _visionRange);
+
+        // Líneas laterales del cono
+        Vector3 rightBoundary = Quaternion.Euler(0f, _visionAngle * 0.5f, 0f) * _eyeTransform.forward;
+        Gizmos.color = wireColor;
+        Gizmos.DrawLine(_eyeTransform.position, _eyeTransform.position + leftBoundary * _visionRange);
+        Gizmos.DrawLine(_eyeTransform.position, _eyeTransform.position + rightBoundary * _visionRange);
+
+        // 3. Dibujar simulación de Raycasts en tiempo real hacia los puntos VR
+        if (_playerDetectionPoints == null) return;
+
+        foreach (var point in _playerDetectionPoints)
+        {
+            if (point == null) continue;
+            Vector3 direction = point.position - _eyeTransform.position;
+
+            // Replicamos los filtros matemáticos visualmente
+            if (direction.sqrMagnitude > _visionRangeSqr || Vector3.Angle(_eyeTransform.forward, direction) > _visionAngle * 0.5f)
+            {
+                Gizmos.color = Color.gray; // Fuera de rango o ángulo
+                Gizmos.DrawLine(_eyeTransform.position, point.position);
+                continue;
+            }
+
+            if (Physics.Raycast(_eyeTransform.position, direction.normalized, out RaycastHit hit, _visionRange, _visionLayerMask))
+            {
+                if (hit.transform == point || hit.transform.IsChildOf(point.root))
+                {
+                    Gizmos.color = Color.green; // Rayo limpio que ve al jugador
+                    Gizmos.DrawLine(_eyeTransform.position, hit.point);
+                    Gizmos.DrawWireSphere(hit.point, 0.08f);
+                }
+                else
+                {
+                    Gizmos.color = Color.red; // Rayo obstruido por escenario u obstáculos
+                    Gizmos.DrawLine(_eyeTransform.position, hit.point);
+                    Gizmos.DrawLine(hit.point, point.position);
+                }
+            }
+        }
+    }
+#endif
 }
