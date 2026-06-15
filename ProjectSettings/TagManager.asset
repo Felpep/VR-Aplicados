@@ -39,8 +39,8 @@ TagManager:
   - Grabbable
   - Hand
   - Interactive
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 

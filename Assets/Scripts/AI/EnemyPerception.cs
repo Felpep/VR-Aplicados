@@ -48,10 +48,13 @@ public class EnemyPerception : MonoBehaviour
             return;
         }
 
-        _eyeTransform             = transform; // Sobrescribir con un hijo 'Head' si el modelo lo tiene
-        _visionRangeSqr           = _visionRange * _visionRange;
-        _noiseDetectionRadiusSqr  = _noiseDetectionRadius * _noiseDetectionRadius;
+        _eyeTransform = transform;
+        _visionRangeSqr = _visionRange * _visionRange;
+        _noiseDetectionRadiusSqr = _noiseDetectionRadius * _noiseDetectionRadius;
     }
+
+
+
 
     private void OnEnable()
     {
@@ -65,6 +68,10 @@ public class EnemyPerception : MonoBehaviour
         StopAllCoroutines();
     }
 
+
+
+
+
     // ── Vision Coroutine (Time-Sliced) ────────────────────────────────────────
     /// <summary>
     /// Corre en intervalos fijos de _visionTickRate para desacoplar la detección
@@ -76,18 +83,26 @@ public class EnemyPerception : MonoBehaviour
 
         while (true)
         {
-            // Solo procesa visión en estados relevantes (evita trabajo en Chase innecesario)
-            if (!_stateMachine.IsInState<ChaseState>())
+            // Cambiamos la condición para que siempre valide la pérdida si está en Chase
+            bool targetInSight = CheckVision();
+
+            if (!targetInSight && _stateMachine.IsInState<ChaseState>())
             {
-                CheckVision();
+                // Limpia el transform cacheado para que ChaseState empiece su cuenta regresiva
+                _stateMachine.DetectedTarget = null;
             }
+
             yield return wait;
         }
     }
 
-    private void CheckVision()
+
+
+
+
+    private bool CheckVision()
     {
-        if (_playerDetectionPoints == null || _playerDetectionPoints.Length == 0) return;
+        if (_playerDetectionPoints == null || _playerDetectionPoints.Length == 0) return false;
 
         for (int i = 0; i < _playerDetectionPoints.Length; i++)
         {
@@ -100,24 +115,29 @@ public class EnemyPerception : MonoBehaviour
             if (toTarget.sqrMagnitude > _visionRangeSqr) continue;
 
             // ── Filtro 2: Ángulo dentro del cono de visión ────────────────────
-            // Vector3.Angle es más costoso que una comparación de dot product,
-            // pero la claridad semántica supera la micro-optimización aquí,
-            // dado que ya filtramos por distancia primero.
             if (Vector3.Angle(_eyeTransform.forward, toTarget) > _visionAngle * 0.5f) continue;
 
             // ── Filtro 3: Raycast (solo si pasa los filtros anteriores) ───────
             if (Physics.Raycast(_eyeTransform.position, toTarget.normalized, out RaycastHit hit,
                                  _visionRange, _visionLayerMask, QueryTriggerInteraction.Ignore))
             {
-                // Si el primer objeto impactado pertenece al jugador, hay visión directa
+                // Si el primer objeto impactado pertenece al jugador, hay visión directa confirmada
                 if (hit.transform == point || hit.transform.IsChildOf(point.root))
                 {
                     OnTargetConfirmed(point.root);
-                    return; // Basta con detectar uno de los puntos para confirmar
+                    return true; // Retorno inmediato: con ver una extremidad o el casco ya es suficiente
                 }
             }
         }
+
+        return false; // El bucle terminó y el jugador superó los obstáculos físicos o de cono de visión
     }
+
+
+
+
+
+
 
     // ── Respuesta a detección confirmada ──────────────────────────────────────
     private void OnTargetConfirmed(Transform playerRoot)
@@ -129,7 +149,6 @@ public class EnemyPerception : MonoBehaviour
             _stateMachine.TransitionTo(_stateMachine.StateChase);
         }
     }
-
     // ── Respuesta a evento de ruido ───────────────────────────────────────────
     private void HandleNoise(Vector3 noiseOrigin, float noiseRadius)
     {

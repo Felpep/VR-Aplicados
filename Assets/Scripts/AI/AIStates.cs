@@ -72,32 +72,51 @@ public class SuspicionState : BaseAIState
 public class ChaseState : BaseAIState
 {
     private float _lostTargetTimer;
-    private const float LostTargetTimeout = 3f; // Segundos antes de volver a sospecha
+    private const float LostTargetTimeout = 3f;
+
+    // Optimización de Pathfinding: evita llamadas masivas a SetDestination
+    private float _pathCountdown;
+    private const float PathRefreshRate = 0.15f;
 
     public override void Enter(AIStateMachine owner)
     {
         _lostTargetTimer = LostTargetTimeout;
+        _pathCountdown = 0f;
         owner.Movement.SetChaseMode();
     }
 
     public override void UpdateState(AIStateMachine owner)
     {
+        // Forzamos una validación visual limpia desacoplada del cache de percepción
         if (owner.DetectedTarget == null)
         {
-            _lostTargetTimer -= Time.deltaTime;
-            if (_lostTargetTimer <= 0f)
-            {
-                owner.TransitionTo(owner.StateSuspicion);
-            }
+            HandleTargetLost(owner);
             return;
         }
 
-        _lostTargetTimer = LostTargetTimeout; // Resetea el timer mientras hay target
-        owner.Movement.ChaseTarget(owner.DetectedTarget);
+        // Si hay target válido en memoria, evaluamos el cooldown para actualizar NavMesh
+        _lostTargetTimer = LostTargetTimeout;
+        _pathCountdown -= Time.deltaTime;
+
+        if (_pathCountdown <= 0f)
+        {
+            _pathCountdown = PathRefreshRate;
+            owner.Movement.ChaseTarget(owner.DetectedTarget);
+        }
     }
 
     public override void Exit(AIStateMachine owner)
     {
         owner.DetectedTarget = null;
+    }
+
+    private void HandleTargetLost(AIStateMachine owner)
+    {
+        _lostTargetTimer -= Time.deltaTime;
+
+        if (_lostTargetTimer <= 0f)
+        {
+            owner.TransitionTo(owner.StateSuspicion);
+        }
     }
 }
