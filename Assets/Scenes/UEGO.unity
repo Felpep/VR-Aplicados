@@ -1578,6 +1578,7 @@ GameObject:
   - component: {fileID: 320621620}
   - component: {fileID: 320621619}
   - component: {fileID: 320621618}
+  - component: {fileID: 320621623}
   m_Layer: 0
   m_Name: LightSwitchButton
   m_TagString: Untagged
@@ -1600,10 +1601,34 @@ MonoBehaviour:
   _interactableView: {fileID: 320621619}
   _whenHover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 320621623}
+        m_TargetAssemblyTypeName: ButtonHoverHighlight, Assembly-CSharp
+        m_MethodName: Highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _whenUnhover:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 320621623}
+        m_TargetAssemblyTypeName: ButtonHoverHighlight, Assembly-CSharp
+        m_MethodName: Unhighlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
@@ -1806,6 +1831,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b83d0bd2779e4cf4da8e1d3ad6eb8827, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1853,6 +1879,20 @@ Transform:
   - {fileID: 106460420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320621623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320621617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e395d9972ecff1c469e6fd3c36405647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverHighlight
+  highlightColor: {r: 0.9433962, g: 0.44111043, b: 0.07564971, a: 1}
+  intensity: 2
 --- !u!1 &328086460
 GameObject:
   m_ObjectHideFlags: 0
