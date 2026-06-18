@@ -1,41 +1,47 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
 [RequireComponent(typeof(Collider))]
 public class ModularCollisionObjective : MonoBehaviour
 {
     [Header("Progression Data")]
     [SerializeField] private string objectiveID;
-
-    [Tooltip("El Tag del objeto que estamos esperando (ej: 'Ball').")]
     [SerializeField] private string targetTag = "Ball";
 
-    [Header("Local Consequences (Unity Events)")]
-    [Tooltip("El evento pasará el GameObject detectado dinámicamente.")]
-    public UnityEvent<GameObject> OnActionTriggered;
+    [Header("Dependencies")]
+    [Tooltip("Arrastra aquí tu objeto MasterMissionController de la escena.")]
+    public MasterMissionController masterController;
 
-    private Collider triggerCollider;
+    [Header("Local Consequences (Unity Events)")]
+    public UnityEvent<GameObject> OnActionTriggered;
 
     private void Awake()
     {
-        
-        triggerCollider = GetComponent<Collider>();
-        triggerCollider.isTrigger = true;
+        GetComponent<Collider>().isTrigger = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(targetTag))
         {
-            
-            if (!string.IsNullOrEmpty(objectiveID))
-            {
-                GameEventSystem.TriggerObjective(objectiveID);
-            }
-
-            
+            // Disparamos el evento (que destruirá el objeto)
             OnActionTriggered?.Invoke(other.gameObject);
+
+            // Notificamos al maestro inmediatamente
+            NotifyMaster();
+        }
+    }
+
+    // NUEVO MÉTODO PUENTE
+    public void NotifyMaster()
+    {
+        if (masterController != null && !string.IsNullOrEmpty(objectiveID))
+        {
+            masterController.AddCountToObjective(objectiveID);
+        }
+        else
+        {
+            Debug.LogError($"[Error]: El tacho '{gameObject.name}' no tiene asignado el MasterController o el ID está vacío.");
         }
     }
 
@@ -43,17 +49,10 @@ public class ModularCollisionObjective : MonoBehaviour
     {
         if (targetToDestroy != null)
         {
-            
             if (targetToDestroy.transform.parent != null)
-            {
-                
                 Destroy(targetToDestroy.transform.parent.gameObject);
-            }
             else
-            {
-                
                 Destroy(targetToDestroy);
-            }
         }
     }
 }
