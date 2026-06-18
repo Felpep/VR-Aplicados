@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Surfaces.PlaneSurface
   _facing: 1
-  _doubleSided: 0
+  _doubleSided: 1
 --- !u!4 &106460420
 Transform:
   m_ObjectHideFlags: 0
