@@ -92,6 +92,16 @@ public class ChaseState : BaseAIState
             return;
         }
 
+        // Buscamos el medidor en el Manager y le inyectamos sospecha visual por frame
+        // Escalamos el daño por sospecha según la distancia (más cerca = sube más rápido)
+        float distance = Vector3.Distance(owner.transform.position, owner.DetectedTarget.position);
+        float suspicionFactor = Mathf.Clamp(30f / distance, 10f, 50f); // A menos metros, más castigo
+
+        // Suponiendo que guardas una referencia al SuspicionMeter en tu arquitectura
+        //owner.SuspicionManager.IncreaseSuspicionByVision(suspicionFactor);
+
+
+
         _lostTargetTimer = LostTargetTimeout;
         _pathCountdown -= Time.deltaTime;
 
