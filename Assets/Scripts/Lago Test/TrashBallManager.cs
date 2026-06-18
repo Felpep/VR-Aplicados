@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class TrashBallManager : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider other)
     {
         
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            Destroy(collision.gameObject);
-
-            
-            Debug.Log("¡Bola destruida!");
+        if (other.CompareTag("Ball"))
+        {         
+            Destroy(other.gameObject);
+           
+            Debug.Log("¡Bola 3D destruida en la oficina!");
         }
     }
 }
