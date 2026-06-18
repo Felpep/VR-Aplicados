@@ -6773,16 +6773,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.0644724
-      objectReference: {fileID: 0}
-    - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.2556474
-      objectReference: {fileID: 0}
-    - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.285
+      value: -1.3
       objectReference: {fileID: 0}
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6790,7 +6782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.512
+      value: -4.79
       objectReference: {fileID: 0}
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6820,10 +6812,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2509577314264573519, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.399
-      objectReference: {fileID: 0}
+    - target: {fileID: 3048585029662277673, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
+      propertyPath: masterController
+      value: 
+      objectReference: {fileID: 1091814279}
     - target: {fileID: 4595308751303236593, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_Name
       value: Tacho Basura
@@ -6831,16 +6823,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240793937}
-    - targetCorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240793941}
-    - targetCorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240793940}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
 --- !u!1001 &716188488
 PrefabInstance:
@@ -11737,164 +11720,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.009499997, y: 0.01770607, z: -0.0011095554}
     m_Extent: {x: 0.04527676, y: 0.05372102, z: 0.06648618}
   m_DirtyAABB: 0
---- !u!1 &1240793934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-  m_PrefabInstance: {fileID: 713386224}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1240793937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240793934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de42d84582573847b4e400f94ac575c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ModularCollisionObjective
-  objectiveID: prank_trash_ball
-  targetTag: Ball
-  masterController: {fileID: 1091814279}
-  OnActionTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1240793937}
-        m_TargetAssemblyTypeName: ModularCollisionObjective, Assembly-CSharp
-        m_MethodName: DestroyDetectedObject
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1240793940}
-        m_TargetAssemblyTypeName: ModularAudioTrigger, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1240793940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240793934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6470b39dc21eebb4fb8ff22f4e360449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ModularAudioTrigger
-  audioSource: {fileID: 1240793941}
-  soundClip: {fileID: 8300000, guid: 056ecb7fe5286f54bb53885dd80fae39, type: 3}
---- !u!82 &1240793941
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240793934}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1252295589
 GameObject:
   m_ObjectHideFlags: 0
@@ -12307,7 +12132,7 @@ MonoBehaviour:
   LateControllerUpdate: 1
   LateLatching: 0
   controllerDrivenHandPosesType: 0
-  SimultaneousHandsAndControllersEnabled: 0
+  SimultaneousHandsAndControllersEnabled: 1
   _readOnlyWideMotionModeHandPosesEnabled: 0
   wideMotionModeHandPosesEnabled: 0
   dynamicResolutionVersion: 1
