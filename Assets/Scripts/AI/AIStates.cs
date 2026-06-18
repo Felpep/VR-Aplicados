@@ -6,10 +6,17 @@ using UnityEngine;
 public class PatrolState : BaseAIState
 {
     private int _currentWaypointIndex;
+    private float _waitTimer;
+    private bool _isWaiting;
+
+    // Configuración local del estado (puedes pasarla al AIStateMachine si prefieres centralizarla)
+    private const float MinWaitTime = 2.0f;
+    private const float MaxWaitTime = 5.0f;
 
     public override void Enter(AIStateMachine owner)
     {
         owner.Movement.SetPatrolMode();
+        _isWaiting = false;
 
         if (owner.PatrolWaypoints != null && owner.PatrolWaypoints.Length > 0)
         {
@@ -25,17 +32,43 @@ public class PatrolState : BaseAIState
     {
         if (owner.PatrolWaypoints == null || owner.PatrolWaypoints.Length == 0) return;
 
-        if (owner.Movement.HasReachedDestination)
+        if (_isWaiting)
         {
-            AdvanceWaypoint(owner);
+            _waitTimer -= Time.deltaTime;
+
+//#if UNITY_EDITOR
+//            // Muestra el tiempo restante en el entorno para debuguear la espera
+//            Vector3 labelPos = owner.transform.position + Vector3.up * 2.5f;
+//            UnityEditor.Handles.Label(labelPos, $"Escribiendo... {_waitTimer:F1}s");
+//#endif
+
+            if (_waitTimer <= 0f)
+            {
+                _isWaiting = false;
+                AdvanceWaypoint(owner);
+            }
+        }
+        else
+        {
+            if (owner.Movement.HasReachedDestination)
+            {
+                // Al llegar al waypoint, plantamos los pies y calculamos un tiempo aleatorio
+                owner.Movement.Stop();
+                _isWaiting = true;
+                _waitTimer = Random.Range(MinWaitTime, MaxWaitTime);
+            }
         }
     }
 
-    public override void Exit(AIStateMachine owner) { }
+    public override void Exit(AIStateMachine owner)
+    {
+        _isWaiting = false;
+    }
 
     private void AdvanceWaypoint(AIStateMachine owner)
     {
         _currentWaypointIndex = (_currentWaypointIndex + 1) % owner.PatrolWaypoints.Length;
+        owner.Movement.SetPatrolMode(); // Despierta al agente
         owner.Movement.MoveTo(owner.PatrolWaypoints[_currentWaypointIndex].position);
     }
 }

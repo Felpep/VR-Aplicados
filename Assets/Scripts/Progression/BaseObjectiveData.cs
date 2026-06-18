@@ -1,20 +1,10 @@
 using UnityEngine;
 
-public abstract class BaseObjectiveData : ScriptableObject, IObjective
+public abstract class BaseObjectiveData : ScriptableObject
 {
-    [SerializeField] private string objectiveID;
-    private bool isCompleted;
+    [SerializeField] private string _objectiveID;
+    [TextArea(2, 5)][SerializeField] private string _description;
 
-    public string ObjectiveID => objectiveID;
-    public bool IsCompleted => isCompleted;
-
-    public virtual void Complete()
-    {
-        isCompleted = true;
-    }
-
-    public virtual void ResetObjective()
-    {
-        isCompleted = false;
-    }
+    public string ObjectiveID => _objectiveID;
+    public string Description => _description;
 }

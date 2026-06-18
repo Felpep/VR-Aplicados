@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MissionJournalUI : MonoBehaviour
 {
-    [Header("UI Component")]
-    [SerializeField] private TextMeshProUGUI _textComponent;
+    [Header("UI Component (3D World Space)")]
+    [SerializeField] private TextMeshPro _textComponent;
 
     [Header("Objectives Tracked")]
     [SerializeField] private SimpleObjectiveData[] _objectives;
+
+    [Header("Level Brain Link")]
+    [SerializeField] private ProgressionManager _progressionManager;
 
     private StringBuilder _stringBuilder;
 
@@ -16,12 +19,11 @@ public class MissionJournalUI : MonoBehaviour
     {
         if (_textComponent == null)
         {
-            Debug.LogError($"[MissionJournalUI] TextMeshPro no asignado en {name}.");
+            Debug.LogError($"[MissionJournalUI] TextMeshPro (3D) no asignado en {name}.", this);
             enabled = false;
             return;
         }
 
-        // El uso de StringBuilder en VR evita generar basura (Garbage Collection) al concatenar strings
         _stringBuilder = new StringBuilder();
     }
 
@@ -31,6 +33,7 @@ public class MissionJournalUI : MonoBehaviour
         UpdateJournalDisplay();
     }
 
+    // CORRECCIÓN: Se cambió de OnMirrorDisable a OnDisable para que Unity limpie el evento de verdad
     private void OnDisable()
     {
         GameEventSystem.OnObjectiveTriggered -= RefreshJournalText;
@@ -43,10 +46,10 @@ public class MissionJournalUI : MonoBehaviour
 
     private void UpdateJournalDisplay()
     {
-        if (_objectives == null || _objectives.Length == 0) return;
+        if (_objectives == null || _objectives.Length == 0 || _progressionManager == null) return;
 
         _stringBuilder.Clear();
-        _stringBuilder.AppendLine("TAREAS DEL DÍA");
+        _stringBuilder.AppendLine("<align=center><color=#2C3E50><b>TAREAS DEL DÍA</b></color></align>");
         _stringBuilder.AppendLine();
 
         for (int i = 0; i < _objectives.Length; i++)
@@ -54,14 +57,18 @@ public class MissionJournalUI : MonoBehaviour
             SimpleObjectiveData obj = _objectives[i];
             if (obj == null) continue;
 
-            if (obj.IsCompleted)
+            // Consultamos al ProgressionManager usando el ID único del archivo
+            bool isCompleted = _progressionManager.IsObjectiveCompletedInRuntime(obj.ObjectiveID);
+
+            if (isCompleted)
             {
-                // Formato de texto tachado rico nativo de TextMeshPro
-                _stringBuilder.AppendLine($"<s>• {obj.ObjectiveID} (HECHO)</s>");
+                // CAMBIO: Ahora tacha el campo .Description en vez del ID técnico
+                _stringBuilder.AppendLine($"<color=#7F8C8D><s>• {obj.Description} (HECHO)</s></color>");
             }
             else
             {
-                _stringBuilder.AppendLine($"• {obj.ObjectiveID}");
+                // CAMBIO: Muestra la descripción legible de tu ScriptableObject
+                _stringBuilder.AppendLine($"<color=#34495E>• {obj.Description}</color>");
             }
         }
 
