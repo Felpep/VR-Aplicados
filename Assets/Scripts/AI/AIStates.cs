@@ -10,9 +10,6 @@ public class PatrolState : BaseAIState
     private bool _isWaiting;
 
     // Configuración local del estado (puedes pasarla al AIStateMachine si prefieres centralizarla)
-    private const float MinWaitTime = 2.0f;
-    private const float MaxWaitTime = 5.0f;
-
     public override void Enter(AIStateMachine owner)
     {
         owner.Movement.SetPatrolMode();
@@ -55,7 +52,7 @@ public class PatrolState : BaseAIState
                 // Al llegar al waypoint, plantamos los pies y calculamos un tiempo aleatorio
                 owner.Movement.Stop();
                 _isWaiting = true;
-                _waitTimer = Random.Range(MinWaitTime, MaxWaitTime);
+                _waitTimer = Random.Range(owner.MinWaitTime, owner.MaxWaitTime);
             }
         }
     }

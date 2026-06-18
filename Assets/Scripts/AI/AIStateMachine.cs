@@ -27,6 +27,7 @@ public class AIStateMachine : MonoBehaviour
     // ── Suspicion timer ───────────────────────────────────────────────────────
     [Header("Timers")]
     [SerializeField] private float _suspicionDuration = 4f;
+    [SerializeField] public float MinWaitTime, MaxWaitTime;
     public float SuspicionDuration => _suspicionDuration;
 
     // ─────────────────────────────────────────────────────────────────────────
