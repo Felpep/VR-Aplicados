@@ -6,11 +6,11 @@ public class AIMovementController : MonoBehaviour
 {
     [Header("Speed Configuration")]
     [SerializeField] private float _patrolSpeed = 2.0f;
-    [SerializeField] private float _chaseSpeed  = 5.5f;
+    [SerializeField] private float _chaseSpeed = 5.5f;
 
     [Header("Stopping Distances")]
     [SerializeField] private float _patrolStoppingDistance = 0.3f;
-    [SerializeField] private float _chaseStoppingDistance  = 1.5f;
+    [SerializeField] private float _chaseStoppingDistance = 1.5f;
 
     private NavMeshAgent _agent;
 
@@ -21,6 +21,8 @@ public class AIMovementController : MonoBehaviour
         (!_agent.hasPath || _agent.velocity.sqrMagnitude < 0.01f);
 
     public bool IsAgentReady => _agent != null && _agent.isOnNavMesh && _agent.enabled;
+
+    public float CurrentSpeed => IsAgentReady ? _agent.velocity.magnitude : 0f;
 
     // ─────────────────────────────────────────────────────────────────────────
     private void Awake()
@@ -39,17 +41,17 @@ public class AIMovementController : MonoBehaviour
     public void SetPatrolMode()
     {
         if (!IsAgentReady) return;
-        _agent.speed            = _patrolSpeed;
+        _agent.speed = _patrolSpeed;
         _agent.stoppingDistance = _patrolStoppingDistance;
-        _agent.isStopped        = false;
+        _agent.isStopped = false;
     }
 
     public void SetChaseMode()
     {
         if (!IsAgentReady) return;
-        _agent.speed            = _chaseSpeed;
+        _agent.speed = _chaseSpeed;
         _agent.stoppingDistance = _chaseStoppingDistance;
-        _agent.isStopped        = false;
+        _agent.isStopped = false;
     }
 
     /// <summary>

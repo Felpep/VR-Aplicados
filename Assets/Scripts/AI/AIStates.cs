@@ -81,6 +81,8 @@ public class SuspicionState : BaseAIState
     {
         _suspicionTimer = owner.SuspicionDuration;
         owner.Movement.Stop();
+
+        owner.GetComponent<AIAnimationBridge>().SetSuspiciousState(true);
     }
 
     public override void UpdateState(AIStateMachine owner)
@@ -93,7 +95,10 @@ public class SuspicionState : BaseAIState
         }
     }
 
-    public override void Exit(AIStateMachine owner) { }
+    public override void Exit(AIStateMachine owner) 
+    { 
+        owner.GetComponent<AIAnimationBridge>().SetSuspiciousState(false); 
+    }
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -112,6 +117,8 @@ public class ChaseState : BaseAIState
         _lostTargetTimer = LostTargetTimeout;
         _pathCountdown = 0f;
         owner.Movement.SetChaseMode();
+
+        owner.GetComponent<AIAnimationBridge>().SetAlertState(true);
     }
 
     public override void UpdateState(AIStateMachine owner)
@@ -135,6 +142,7 @@ public class ChaseState : BaseAIState
     public override void Exit(AIStateMachine owner)
     {
         owner.DetectedTarget = null;
+        owner.GetComponent<AIAnimationBridge>().SetAlertState(false);
     }
 
     private void HandleTargetLost(AIStateMachine owner)
