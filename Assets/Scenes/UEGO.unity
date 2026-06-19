@@ -16542,10 +16542,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSwitchButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4037188481922958102, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
+      propertyPath: _size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037188481922958102, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
+      propertyPath: _size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037188481922958102, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
+      propertyPath: _size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441665546137362625, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
+      propertyPath: _enterHoverNormal
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8087639388890530304, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 347992030}
+    - target: {fileID: 8087639388890530304, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleLights
+      objectReference: {fileID: 0}
     - target: {fileID: 8781379089327836610, guid: 9096e43bd66f43e4a8f10652a756c972, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.033
