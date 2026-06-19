@@ -22,8 +22,12 @@ public class SpatialFeedbackActuator : MonoBehaviour
     [SerializeField] private GameObject _vfxPrefab;
 
 
-    [Header("Debug / Quick Test")]
-    [SerializeField] private KeyCode _testKey = KeyCode.Space;
+    [Header("Debug / Controller Quick Test")]
+    [Tooltip("Botón físico del mando de Meta para activar el testeo (ej: One = Botón A o X, Two = B o Y)")]
+    [SerializeField] private OVRInput.Button _testControllerButton = OVRInput.Button.One;
+    [Tooltip("Mando físico desde el cual se leerá el botón de prueba")]
+    [SerializeField] private OVRInput.Controller _testControllerActive = OVRInput.Controller.RTouch;
+    [Tooltip("La mano de referencia obligatoria para que el pulso de vibración sepa a dónde ir")]
     [SerializeField] private Transform _testInteractionSource;
 
 
@@ -52,12 +56,7 @@ public class SpatialFeedbackActuator : MonoBehaviour
 
         if (interactionSource.CompareTag("LeftHand")) targetHand = InputDeviceCharacteristics.Left;
         else if (interactionSource.CompareTag("RightHand")) targetHand = InputDeviceCharacteristics.Right;
-
-        else
-        {
-            return; // Si no es ninguna de las dos manos (ej: una física del escenario), salimos de inmediato
-        }
-
+        else return;
 
         var devices = new List<InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(targetHand | InputDeviceCharacteristics.Controller, devices);
@@ -75,9 +74,9 @@ public class SpatialFeedbackActuator : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKeyDown(_testKey))
+        if (OVRInput.GetDown(_testControllerButton, _testControllerActive))
         {
-            Debug.Log($"[SpatialFeedbackActuator] Testeo activado en {name}");
+            Debug.Log($"[SpatialFeedbackActuator] Testeo de mando activado en {name} usando el botón {_testControllerButton}");
             TriggerAllFeedbacks(_testInteractionSource);
         }
     }

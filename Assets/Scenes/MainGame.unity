@@ -671,7 +671,8 @@ MonoBehaviour:
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
   _vfxPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
-  _testKey: 32
+  _testControllerButton: 8192
+  _testControllerActive: -1
   _testInteractionSource: {fileID: 389416748}
 --- !u!114 &62800556
 MonoBehaviour:
@@ -20974,7 +20975,8 @@ MonoBehaviour:
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
   _vfxPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
-  _testKey: 32
+  _testControllerButton: 2097152
+  _testControllerActive: -1
   _testInteractionSource: {fileID: 389416748}
 --- !u!135 &2028373928
 SphereCollider:
