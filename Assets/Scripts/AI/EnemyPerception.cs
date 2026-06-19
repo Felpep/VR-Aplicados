@@ -62,7 +62,19 @@ public class EnemyPerception : MonoBehaviour
         {
             bool targetInSight = CheckVision();
 
-            if (!targetInSight && _stateMachine.IsInState<ChaseState>())
+            if (_stateMachine.DetectedTarget != null)
+            {
+                // Lanzamos un chequeo rápido para ver si el jugador está en zona segura
+                // (puedes usar Physics.OverlapSphere para detectar si está en SafeZone)
+                bool isInSafeZone = Physics.CheckSphere(_stateMachine.DetectedTarget.position, 0.5f, LayerMask.GetMask("SafeZone"));
+
+                if (isInSafeZone)
+                {
+                    _stateMachine.DetectedTarget = null;
+                    _stateMachine.TransitionTo(_stateMachine.StateSuspicion);
+                }
+            }
+            else if (!targetInSight && _stateMachine.IsInState<ChaseState>())
             {
                 _stateMachine.DetectedTarget = null;
             }
