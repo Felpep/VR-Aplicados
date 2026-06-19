@@ -48,9 +48,16 @@ public class SpatialFeedbackActuator : MonoBehaviour
 
     private void SendHapticPulse(Transform interactionSource)
     {
-        InputDeviceCharacteristics targetHand = interactionSource.CompareTag("LeftHand")
-            ? InputDeviceCharacteristics.Left
-            : InputDeviceCharacteristics.Right;
+        InputDeviceCharacteristics targetHand;
+
+        if (interactionSource.CompareTag("LeftHand")) targetHand = InputDeviceCharacteristics.Left;
+        else if (interactionSource.CompareTag("RightHand")) targetHand = InputDeviceCharacteristics.Right;
+
+        else
+        {
+            return; // Si no es ninguna de las dos manos (ej: una física del escenario), salimos de inmediato
+        }
+
 
         var devices = new List<InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(targetHand | InputDeviceCharacteristics.Controller, devices);

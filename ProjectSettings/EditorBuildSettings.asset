@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: a98f58a5293bf3a45b8f285d28da8f11
   - enabled: 1
-    path: Assets/Scenes/UEGO.unity
+    path: Assets/Scenes/MainGame.unity
     guid: cae6f6e6b0f22a64a8eb0937be99a21f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
