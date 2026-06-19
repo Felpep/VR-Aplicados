@@ -26,6 +26,11 @@ public class UIMenuController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        Debug.Log("[AccesoDenegado] FUNCIONA VALEN");
+    }
+
     // --- MÉTODOS DE ESCENA Y AUDIO (Los que ya tenías) ---
     public void LoadSceneByName(string sceneName)
     {
