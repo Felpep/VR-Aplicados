@@ -78,4 +78,9 @@ public class UIMenuController : MonoBehaviour
         Debug.Log("[UI]: Saliendo del juego...");
         Application.Quit();
     }
+
+    public void MinecraftLog()
+    {
+        Debug.Log("[UI]: Tocaste el botón de Minecraft.");
+    }
 }
