@@ -69,7 +69,7 @@ public class UIMenuController : MonoBehaviour
             Debug.LogWarning("[UI]: Intentaste cambiar la viñeta, pero no asignaste el script OVRVignette en el Inspector.");
         }
     }
-
+     
     /// <summary>
     /// Cierra la aplicación de forma segura.
     /// </summary>
