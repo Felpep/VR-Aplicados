@@ -5,7 +5,7 @@ using UnityEngine;
 public class MissionJournalUI : MonoBehaviour
 {
     [Header("UI Component (3D World Space)")]
-    [SerializeField] private TextMeshPro _textComponent;
+    [SerializeField] private TextMeshProUGUI _textComponent;
 
     [Header("Objectives Tracked")]
     [SerializeField] private SimpleObjectiveData[] _objectives;
