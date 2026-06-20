@@ -59,4 +59,9 @@ public class SpringProceduralBone : MonoBehaviour
     {
         _currentAngularVelocity += force;
     }
+
+    public void Debug_ApplyExternalForce()
+    {
+        ApplyExternalForce(new Vector3(30, 30, 30));
+    }
 }

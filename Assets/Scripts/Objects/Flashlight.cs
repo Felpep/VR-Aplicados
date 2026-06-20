@@ -55,6 +55,13 @@ public class Flashlight : MonoBehaviour
         }
     }
 
+
+    private void OnEnable()
+    {
+        _isFlashlightOn = true;
+        SetFlashlightState(true);
+    }
+
     /// <summary>
     /// Fallback de seguridad: si el objeto se desinstancia o se fuerza un drop, 
     /// apagamos la luz físicamente.
