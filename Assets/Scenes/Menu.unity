@@ -8355,7 +8355,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
@@ -8367,6 +8375,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 385010903}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 385010903}
@@ -8374,6 +8386,14 @@ PrefabInstance:
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 586485360}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerButtonAnimation
+      objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -8385,6 +8405,10 @@ PrefabInstance:
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: LoadSceneByName
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PokeButtonAnimator, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -8401,6 +8425,10 @@ PrefabInstance:
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _whenHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
