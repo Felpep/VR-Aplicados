@@ -29,6 +29,7 @@ public class UIMenuController : MonoBehaviour
     // --- MÉTODOS DE ESCENA Y AUDIO (Los que ya tenías) ---
     public void LoadSceneByName(string sceneName)
     {
+       
         SceneManager.LoadScene(sceneName);
     }
 
