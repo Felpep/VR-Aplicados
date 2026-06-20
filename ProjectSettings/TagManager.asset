@@ -7,6 +7,8 @@ TagManager:
   - Ball
   - LeftHand
   - RightHand
+  - FxTemporaire
+  - Controls
   layers:
   - Default
   - TransparentFX
