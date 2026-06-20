@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4999999
@@ -1869,6 +1873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -2186,6 +2194,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3883,6 +3895,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -4102,6 +4118,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4351,6 +4371,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5127,6 +5151,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6627,6 +6655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.499999
@@ -7062,6 +7094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.5
@@ -7154,6 +7190,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8028,6 +8068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -8280,6 +8324,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8609,6 +8657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4999999
@@ -8832,6 +8884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5000001
@@ -8955,6 +9011,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9144,6 +9204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4999999
@@ -9237,6 +9301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -9298,6 +9366,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9361,6 +9433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4999999
@@ -9422,6 +9498,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10370,6 +10450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5
@@ -10715,6 +10799,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11450,6 +11538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
@@ -11748,6 +11840,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12185,6 +12281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.5
@@ -12502,6 +12602,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1248005661}
   - component: {fileID: 1248005662}
+  - component: {fileID: 1248005663}
+  - component: {fileID: 1248005665}
+  - component: {fileID: 1248005664}
   m_Layer: 7
   m_Name: AI_Perception_Collider
   m_TagString: Untagged
@@ -12545,6 +12648,62 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1248005663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248005660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.VR::OVRScreenFade
+  fadeTime: 2
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
+--- !u!114 &1248005664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248005660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccbce492478e894cb042347815a55c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeadCollisionFade
+  obstacleTag: Pared
+--- !u!54 &1248005665
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248005660}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1252295589
 GameObject:
   m_ObjectHideFlags: 0
@@ -13271,6 +13430,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14515,6 +14678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5000001
@@ -14735,6 +14902,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15196,6 +15367,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7652783248613399332, guid: eac496dabf87c6e4098dd8cfa5f37ccc, type: 3}
   m_PrefabInstance: {fileID: 1448864471}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1455121344
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2229107
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.21724947
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9761161
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -154.905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223089246780856090, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781893239846592620, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_Name
+      value: desk_3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
 --- !u!1 &1462705532
 GameObject:
   m_ObjectHideFlags: 0
@@ -16012,6 +16240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.5
@@ -16104,6 +16336,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16404,6 +16640,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16829,6 +17069,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -17197,6 +17441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -17290,6 +17538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -17351,6 +17603,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17538,6 +17794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -17630,6 +17890,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18737,6 +19001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.5
@@ -18865,6 +19133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.5
@@ -18926,6 +19198,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19026,6 +19302,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19252,6 +19532,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20143,6 +20427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
@@ -20473,6 +20761,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22000,6 +22292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
+      objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
@@ -22061,6 +22357,10 @@ PrefabInstance:
     - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_Name
       value: wall_standard_wood_alt_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
+      propertyPath: m_TagString
+      value: Pared
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22686,3 +22986,4 @@ SceneRoots:
   - {fileID: 390899928}
   - {fileID: 1090919493}
   - {fileID: 1725689379}
+  - {fileID: 1455121344}
