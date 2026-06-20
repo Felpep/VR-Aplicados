@@ -1,9 +1,8 @@
 using UnityEngine;
-using Oculus.Interaction;
 
 /// <summary>
-/// Controla el encendido y apagado de una linterna VR leyendo el hardware nativo
-/// de Meta Quest solo cuando el objeto está activamente agarrado.
+/// Controla el encendido y apagado de una linterna VR leyendo el hardware nativo de Meta.
+/// Su ciclo de ejecución (Update) es controlado externamente mediante eventos de agarre.
 /// </summary>
 public class Flashlight : MonoBehaviour
 {
@@ -17,35 +16,23 @@ public class Flashlight : MonoBehaviour
     [Tooltip("Botón físico del control para encender/apagar (ej: PrimaryIndexTrigger = Gatillo, One = Botón A/X)")]
     [SerializeField] private OVRInput.Button _actionButton = OVRInput.Button.PrimaryIndexTrigger;
 
-    private IInteractableView _grabInteractable;
     private bool _isFlashlightOn;
 
     private void Awake()
     {
-        // Buscamos la interfaz de interacción en el mismo objeto
-        _grabInteractable = GetComponent<IInteractableView>();
-
-        if (_grabInteractable == null)
-        {
-            Debug.LogError($"[VRFlashlight] No se encontró un componente interactuable compatible en {name}.", this);
-            enabled = false;
-            return;
-        }
-
         // Forzamos estado coherente apagado al cargar escena
         SetFlashlightState(false);
+
+        // Empieza desactivado por defecto hasta que el jugador lo agarre
+        enabled = false;
     }
 
     private void Update()
     {
-        // REGLA DE OPTIMIZACIÓN VR: Si la linterna está tirada en el suelo, salimos de inmediato.
-        // Solo consumimos ciclos de Input si el estado actual es 'Select' (agarrado).
-        if (_grabInteractable.State != InteractableState.Select) return;
-
-        // Determinamos dinámicamente qué control tiene sostenida la linterna leyendo la FSM del SDK de Meta
+        // Si el script está "enabled", es porque sabemos con certeza que está en la mano.
+        // Determinamos el control activo de forma dinámica
         OVRInput.Controller activeController = OVRInput.GetActiveController();
 
-        // Si se presiona el botón en la mano que sostiene el objeto, conmutamos
         if (OVRInput.GetDown(_actionButton, activeController))
         {
             ToggleFlashlight();
@@ -58,14 +45,23 @@ public class Flashlight : MonoBehaviour
         SetFlashlightState(_isFlashlightOn);
     }
 
-    private void SetFlashlightState(bool state)
+    public void SetFlashlightState(bool state)
     {
         if (_spotlight != null) _spotlight.enabled = state;
 
-        // Permutación optimizada de materiales sin duplicar instancias en memoria RAM
         if (_lensRenderer != null && _lensOnMaterial != null && _lensOffMaterial != null)
         {
             _lensRenderer.sharedMaterial = state ? _lensOnMaterial : _lensOffMaterial;
         }
+    }
+
+    /// <summary>
+    /// Fallback de seguridad: si el objeto se desinstancia o se fuerza un drop, 
+    /// apagamos la luz físicamente.
+    /// </summary>
+    private void OnDisable()
+    {
+        _isFlashlightOn = false;
+        SetFlashlightState(false);
     }
 }

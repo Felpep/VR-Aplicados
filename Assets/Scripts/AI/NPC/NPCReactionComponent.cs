@@ -15,6 +15,8 @@ public class NPCReactionComponent : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
+
         float impactForce = collision.relativeVelocity.magnitude;
 
         if (impactForce >= _minimumImpactForce)
@@ -25,6 +27,8 @@ public class NPCReactionComponent : MonoBehaviour
 
     public void TriggerReaction(Vector3 worldImpactPoint, float intensity)
     {
+        Debug.Log("TriggerReaction " + worldImpactPoint + intensity);
+
         // 1. Emitir sonido tridimensional usando tu AudioManager en Pool
         if (_annoyedVoices != null && _annoyedVoices.Length > 0)
         {
@@ -42,5 +46,16 @@ public class NPCReactionComponent : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log($"[NPCReaction] {name} molestado con intensidad: {intensity}.");
 #endif
+    }
+
+
+
+    /// <summary>
+    /// Sobrecarga simplificada para ser invocada directamente desde UnityEvents del Inspector (ej: OnSelected).
+    /// </summary>
+    public void TriggerGrabReaction()
+    {
+        // Llama al método original pasándole una posición base y una fuerza fija (ej: 8f)
+        TriggerReaction(transform.position, 8.0f);
     }
 }

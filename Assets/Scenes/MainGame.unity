@@ -9994,7 +9994,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1248005661}
   m_Father: {fileID: 1327702249}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1007214120
@@ -12295,6 +12296,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1248005660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1248005661}
+  - component: {fileID: 1248005662}
+  m_Layer: 7
+  m_Name: AI_Perception_Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1248005661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248005660}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007214119}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1248005662
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248005660}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1252295589
 GameObject:
   m_ObjectHideFlags: 0
@@ -18716,7 +18770,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: ba4e6e41cc5cb574bb174528b21ba0e3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 58e8abad93747564e867f8464b87132a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1839501099
 Transform:
@@ -22080,6 +22134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI_npc
       objectReference: {fileID: 0}
+    - target: {fileID: 3323392482837398262, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6649537200444860920, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.29
@@ -22188,8 +22246,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8589624026821609584, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8629926692778309392}
   m_SourcePrefab: {fileID: 100100000, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
+--- !u!1 &8629926692778309391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8589624026821609584, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
+  m_PrefabInstance: {fileID: 8629926692778309390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8629926692778309392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629926692778309391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb014a1cd79870941b8f2677d30025a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialFeedbackActuator
+  _sfxClip: {fileID: 8300000, guid: a4589fcb2e14df64984ac0aaba006912, type: 3}
+  _volume: 0.1
+  _triggerHaptics: 0
+  _hapticDuration: 0.2
+  _hapticAmplitude: 0.5
+  _vfxPrefab: {fileID: 0}
+  _testControllerButton: 0
+  _testControllerActive: 0
+  _testInteractionSource: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
