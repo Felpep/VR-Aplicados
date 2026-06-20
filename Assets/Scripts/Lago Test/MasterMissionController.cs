@@ -46,10 +46,9 @@ public class MasterMissionController : MonoBehaviour
             {
                 mission.isCompleted = true;
 
-              
-                GameEventSystem.TriggerObjective(id);
+                Debug.Log($"<color=green>[MasterController] ¡MISIÓN COMPLETADA! -> '{id}' ha alcanzado {mission.targetCount}/{mission.targetCount}.</color>");
 
-                
+                GameEventSystem.TriggerObjective(id);                
                 mission.OnMissionCompleted?.Invoke();
             }
         }
