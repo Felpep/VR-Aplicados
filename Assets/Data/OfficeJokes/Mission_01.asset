@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760e7854d19a5b547a0a9d7e914e7078, type: 3}
   m_Name: Mission_01
   m_EditorClassIdentifier: Assembly-CSharp::SimpleObjectiveData
-  _objectiveID: 67
+  _objectiveID: Mission_01
   _description: hacer algo

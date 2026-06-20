@@ -291,14 +291,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1528977035564820465, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
-      propertyPath: _testControllerActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528977035564820465, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
-      propertyPath: _testControllerButton
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8589624026821609584, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
       propertyPath: m_Name
       value: Flashlight (1)
@@ -3246,7 +3238,6 @@ GameObject:
   - component: {fileID: 347992024}
   - component: {fileID: 347992028}
   - component: {fileID: 347992029}
-  - component: {fileID: 347992030}
   m_Layer: 0
   m_Name: MissionJournal
   m_TagString: Untagged
@@ -3266,12 +3257,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c3646224d889c46bea8c8a2513b383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissionJournalUI
-  _textComponent: {fileID: 0}
+  _textComponent: {fileID: 1397562130}
   _objectives:
   - {fileID: 11400000, guid: 05c9bd3d4de041c4890f5f54a9cba4be, type: 2}
   - {fileID: 11400000, guid: 5991f03e855e248498481f9a8e9cc9f4, type: 2}
   - {fileID: 11400000, guid: c8fcb01b3c9d49a4aaa24e1f0ddfdda4, type: 2}
-  _progressionManager: {fileID: 0}
+  _progressionManager: {fileID: 1091814277}
 --- !u!54 &347992026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3360,30 +3351,6 @@ MonoBehaviour:
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
   _forceKinematicDisabled: 0
---- !u!114 &347992030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347992023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb862e943621ed45a6ffe1ae7e80b89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LightMissionController
-  roomLights:
-  - {fileID: 1230664145}
-  bulbRenderers: []
-  bulbOnMaterial: {fileID: 0}
-  bulbOffMaterial: {fileID: 0}
-  startLightsOn: 1
-  OnLightsOff:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLightsOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &349227381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3617,11 +3584,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1397605296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &389416748 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5454706315913232034, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 1386754581}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &390024526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7036,20 +6998,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.0644724
-      objectReference: {fileID: 0}
-    - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.2556474
-      objectReference: {fileID: 0}
-    - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.449
       objectReference: {fileID: 0}
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23510961
+      value: -0.206
       objectReference: {fileID: 0}
     - target: {fileID: 1908902304200563722, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7083,35 +7037,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2509577314264573519, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.399
-      objectReference: {fileID: 0}
     - target: {fileID: 4595308751303236593, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_Name
       value: Tacho Basura
       objectReference: {fileID: 0}
-    - target: {fileID: 8952577919813935097, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_Size.y
-      value: 0.24165197
-      objectReference: {fileID: 0}
-    - target: {fileID: 8952577919813935097, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      propertyPath: m_Center.y
-      value: -0.1311783
-      objectReference: {fileID: 0}
+    - target: {fileID: 6818267602121698140, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
+      propertyPath: masterController
+      value: 
+      objectReference: {fileID: 1091814279}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240793937}
-    - targetCorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240793941}
-    - targetCorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240793940}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
 --- !u!1001 &716188488
 PrefabInstance:
@@ -11289,6 +11226,7 @@ GameObject:
   - component: {fileID: 1091814278}
   - component: {fileID: 1091814277}
   - component: {fileID: 1091814279}
+  - component: {fileID: 1091814280}
   m_Layer: 0
   m_Name: ProgressionManager
   m_TagString: Untagged
@@ -11340,7 +11278,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MasterMissionController
   counterMissions:
-  - objectiveID: prank_trash_ball
+  - objectiveID: Mission_01
+    targetCount: 1
+    currentCount: 0
+    isCompleted: 0
+    OnCountIncremented:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1091814279}
+          m_TargetAssemblyTypeName: MasterMissionController, Assembly-CSharp
+          m_MethodName: AddCountToObjective
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnMissionCompleted:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1091814280}
+          m_TargetAssemblyTypeName: SpatialFeedbackActuator, Assembly-CSharp
+          m_MethodName: TriggerFeedback
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - objectiveID: Mission_02
     targetCount: 2
     currentCount: 0
     isCompleted: 0
@@ -11361,7 +11333,74 @@ MonoBehaviour:
           m_CallState: 2
     OnMissionCompleted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1091814280}
+          m_TargetAssemblyTypeName: SpatialFeedbackActuator, Assembly-CSharp
+          m_MethodName: TriggerFeedback
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - objectiveID: Mission_03
+    targetCount: 5
+    currentCount: 0
+    isCompleted: 0
+    OnCountIncremented:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1091814279}
+          m_TargetAssemblyTypeName: MasterMissionController, Assembly-CSharp
+          m_MethodName: AddCountToObjective
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnMissionCompleted:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1091814280}
+          m_TargetAssemblyTypeName: SpatialFeedbackActuator, Assembly-CSharp
+          m_MethodName: TriggerFeedback
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1091814280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091814276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb014a1cd79870941b8f2677d30025a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpatialFeedbackActuator
+  _sfxClip: {fileID: 8300000, guid: 6939104a94649b94e9905288066000eb, type: 3}
+  _volume: 0.5
+  _vfxPrefab: {fileID: 0}
+  _triggerHaptics: 0
+  _radarRadius: 1.5
+  _hapticDuration: 0.2
+  _hapticAmplitude: 0.5
+  _testControllerButton: 0
+  _testControllerActive: 0
 --- !u!1 &1092872399
 GameObject:
   m_ObjectHideFlags: 0
@@ -12422,164 +12461,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.009499997, y: 0.01770607, z: -0.0011095554}
     m_Extent: {x: 0.04527676, y: 0.05372102, z: 0.06648618}
   m_DirtyAABB: 0
---- !u!1 &1240793934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7811200003090867071, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
-  m_PrefabInstance: {fileID: 713386224}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1240793937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240793934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de42d84582573847b4e400f94ac575c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ModularCollisionObjective
-  objectiveID: prank_trash_ball
-  targetTag: Ball
-  masterController: {fileID: 1091814279}
-  OnActionTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1240793937}
-        m_TargetAssemblyTypeName: ModularCollisionObjective, Assembly-CSharp
-        m_MethodName: DestroyDetectedObject
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1240793940}
-        m_TargetAssemblyTypeName: ModularAudioTrigger, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1240793940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240793934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6470b39dc21eebb4fb8ff22f4e360449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ModularAudioTrigger
-  audioSource: {fileID: 1240793941}
-  soundClip: {fileID: 8300000, guid: 056ecb7fe5286f54bb53885dd80fae39, type: 3}
---- !u!82 &1240793941
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240793934}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1245318952
 GameObject:
   m_ObjectHideFlags: 0
@@ -13122,7 +13003,7 @@ Transform:
   m_GameObject: {fileID: 1291393238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.68, y: 0.87, z: -2.43}
+  m_LocalPosition: {x: -0.9, y: 0.87, z: -1.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14580,10 +14461,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 266995589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.15, y: 0.2}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1397605295
 GameObject:
@@ -17707,6 +17588,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
   m_PrefabInstance: {fileID: 1686680913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1687245871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1687245872}
+  m_Layer: 0
+  m_Name: --- DEBUG ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1687245872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687245871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1699950958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18288,7 +18200,7 @@ PrefabInstance:
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 347992030}
+      objectReference: {fileID: 0}
     - target: {fileID: 4149468762647978926, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleLights
@@ -18471,6 +18383,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670f20a4f35fcb249b1a44693addaa66, type: 3}
+--- !u!1 &1786060095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786060097}
+  - component: {fileID: 1786060096}
+  m_Layer: 0
+  m_Name: MissionDebuger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1786060096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786060095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24a20f4e0f1d894eb60dbbec500f031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MissionDebugTester
+  _targetObjectiveAsset: {fileID: 11400000, guid: 05c9bd3d4de041c4890f5f54a9cba4be, type: 2}
+  _masterController: {fileID: 1091814279}
+--- !u!4 &1786060097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786060095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786468529
 GameObject:
   m_ObjectHideFlags: 0
@@ -21339,13 +21297,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpatialFeedbackActuator
   _sfxClip: {fileID: 8300000, guid: a2aa71a7c9a82d0438a29fb2cd3a49af, type: 3}
   _volume: 1
+  _vfxPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
   _triggerHaptics: 1
+  _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _vfxPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
   _testControllerButton: 0
   _testControllerActive: 0
-  _testInteractionSource: {fileID: 389416748}
 --- !u!135 &2028373928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22561,14 +22519,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 843290057680692197, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
-      propertyPath: _showConsoleLogs
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 843290057680692197, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
-      propertyPath: _playerDetectionPoints.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 843290057680692197, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: '_playerDetectionPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 1248005661}
@@ -22579,10 +22529,6 @@ PrefabInstance:
     - target: {fileID: 3323392482837398262, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: m_Name
       value: AI_npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323392482837398262, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6649537200444860920, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22623,10 +22569,6 @@ PrefabInstance:
     - target: {fileID: 6649537200444860920, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6989030191863770400, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
-      propertyPath: _chaseSpeed
-      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8857624077766972539, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: '_patrolWaypoints.Array.data[0]'
@@ -22735,6 +22677,8 @@ SceneRoots:
   - {fileID: 8118034674524658694}
   - {fileID: 178123617}
   - {fileID: 1345983437}
+  - {fileID: 1687245872}
+  - {fileID: 1786060097}
   - {fileID: 728389023}
   - {fileID: 1291393243}
   - {fileID: 1789786949}
