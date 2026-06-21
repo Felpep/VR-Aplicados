@@ -1,11 +1,7 @@
 using UnityEngine;
 using Oculus.Interaction;
 
-/// <summary>
-/// Pule el comportamiento físico de un cajón VR controlado por ConfigurableJoint.
-/// Añade audio en los extremos, frena el jittering y duerme el Rigidbody 
-/// para mantener cero consumo de CPU cuando está inactivo.
-/// </summary>
+
 [RequireComponent(typeof(Rigidbody))]
 public class DrawerConstraints : MonoBehaviour
 {
@@ -27,7 +23,7 @@ public class DrawerConstraints : MonoBehaviour
     private Rigidbody _rigidbody;
     private IInteractableView _interactableView;
 
-    // Asumimos que el cajón se ensambla cerrado.
+   
     private float _closedLocalZ;
     private float _openedLocalZ;
 
@@ -48,12 +44,13 @@ public class DrawerConstraints : MonoBehaviour
 
         _interactableView = _grabInteractableSource as IInteractableView;
 
-        // El ancla inicial es la posición cerrada (0 relativo).
-        // El límite máximo es la posición inicial + la magnitud del límite del Joint.
+       
         _closedLocalZ = transform.localPosition.z;
+
+       
         _openedLocalZ = _closedLocalZ + _joint.linearLimit.limit;
 
-        // Evaluamos en el frame cero para dormir el cajón inmediatamente si arranca cerrado
+       
         EvaluateLimits();
         if (_isAtMinLimit) SleepRigidbody();
     }
@@ -69,12 +66,12 @@ public class DrawerConstraints : MonoBehaviour
             return;
         }
 
-        // OPTIMIZACIÓN MÁXIMA: Si no está agarrado y ya está durmiendo, no calculamos NADA.
+        
         if (_isSleeping) return;
 
         EvaluateLimits();
 
-        // Si se soltó, cerró por inercia o colisión, y alcanzó el mínimo, se duerme.
+        
         if (_isAtMinLimit && !_isSleeping)
         {
             SleepRigidbody();
