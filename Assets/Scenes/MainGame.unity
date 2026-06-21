@@ -2249,6 +2249,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7288816506164657790, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
   m_PrefabInstance: {fileID: 244683374}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &249639046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8589624026821609584, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
+  m_PrefabInstance: {fileID: 8629926692778309390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &249639053
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249639046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7379233
+  m_Height: 5.164109
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &266995588
 GameObject:
   m_ObjectHideFlags: 0
@@ -23026,14 +23054,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8196178873928061294, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8589624026821609584, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
       propertyPath: m_Name
       value: Flashlight
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8196178873928061294, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8589624026821609584, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 249639053}
   m_SourcePrefab: {fileID: 100100000, guid: bf2d08f1ffaad6549b2db080e6c96646, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
