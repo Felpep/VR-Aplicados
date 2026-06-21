@@ -1,15 +1,17 @@
 using UnityEngine;
 using Oculus.Interaction;
 
-
-[RequireComponent(typeof(Rigidbody))]
+/// <summary>
+/// Audio en los extremos de un cajón VR controlado por OneGrabTranslateTransformer.
+/// Lee la posición local en Z y reproduce sonido al alcanzar abierto/cerrado.
+/// </summary>
 public class DrawerConstraints : MonoBehaviour
 {
-    [Header("Joint Reference")]
-    [SerializeField] private ConfigurableJoint _joint;
-
-    [Header("Grab Reference (hijo con GrabInteractable)")]
+    [Header("Grab Reference")]
     [SerializeField] private MonoBehaviour _grabInteractableSource;
+
+    [Header("Riel (debe coincidir con el Max Z del transformer)")]
+    [SerializeField] private float _slideDistance = 0.35f;
 
     [Header("Audio")]
     [SerializeField] private AudioClip _onOpenClip;
@@ -17,112 +19,51 @@ public class DrawerConstraints : MonoBehaviour
     [SerializeField] private float _audioVolume = 1f;
 
     [Header("Limit Tuning")]
-    [Tooltip("Distancia en unidades locales al límite para considerarlo 'alcanzado'.")]
     [SerializeField] private float _limitProximityThreshold = 0.015f;
 
-    private Rigidbody _rigidbody;
     private IInteractableView _interactableView;
-
-   
     private float _closedLocalZ;
     private float _openedLocalZ;
-
     private bool _isAtMaxLimit;
     private bool _isAtMinLimit;
-    private bool _isSleeping;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-
-        if (_joint == null || _grabInteractableSource == null)
+        if (_grabInteractableSource == null)
         {
-            Debug.LogError($"[VRDrawerConstraints] Referencias faltantes en {name}. Desactivando.", this);
+            Debug.LogError($"[DrawerConstraints] Falta Grab Interactable Source en {name}. Desactivando.", this);
             enabled = false;
             return;
         }
 
         _interactableView = _grabInteractableSource as IInteractableView;
 
-       
+        // Capturamos la posición cerrada al arrancar y calculamos la abierta.
         _closedLocalZ = transform.localPosition.z;
-
-       
-        _openedLocalZ = _closedLocalZ + _joint.linearLimit.limit;
-
-       
-        EvaluateLimits();
-        if (_isAtMinLimit) SleepRigidbody();
+        _openedLocalZ = _closedLocalZ + _slideDistance;
     }
 
     private void Update()
     {
-        bool isGrabbed = _interactableView != null && _interactableView.State == InteractableState.Select;
+        // Solo evaluamos si el cajón está agarrado (sin grab no se mueve).
+        bool isGrabbed = _interactableView != null &&
+                         _interactableView.State == InteractableState.Select;
+        if (!isGrabbed) return;
 
-        if (isGrabbed)
-        {
-            WakeIfSleeping();
-            EvaluateLimits();
-            return;
-        }
-
-        
-        if (_isSleeping) return;
-
-        EvaluateLimits();
-
-        
-        if (_isAtMinLimit && !_isSleeping)
-        {
-            SleepRigidbody();
-        }
-    }
-
-    private void EvaluateLimits()
-    {
         float currentLocalZ = transform.localPosition.z;
-
         bool nowAtMin = Mathf.Abs(currentLocalZ - _closedLocalZ) <= _limitProximityThreshold;
         bool nowAtMax = Mathf.Abs(currentLocalZ - _openedLocalZ) <= _limitProximityThreshold;
 
-        if (nowAtMax && !_isAtMaxLimit)
-        {
-            ClampVelocity();
-            PlayLimitSound(_onOpenClip);
-        }
-
-        if (nowAtMin && !_isAtMinLimit)
-        {
-            ClampVelocity();
-            PlayLimitSound(_onCloseClip);
-        }
+        if (nowAtMax && !_isAtMaxLimit) PlayLimitSound(_onOpenClip);
+        if (nowAtMin && !_isAtMinLimit) PlayLimitSound(_onCloseClip);
 
         _isAtMaxLimit = nowAtMax;
         _isAtMinLimit = nowAtMin;
-    }
-
-    private void ClampVelocity()
-    {
-        _rigidbody.linearVelocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
     }
 
     private void PlayLimitSound(AudioClip clip)
     {
         if (clip == null || AudioManager.Instance == null) return;
         AudioManager.Instance.PlaySFX3D(clip, transform.position, _audioVolume);
-    }
-
-    private void SleepRigidbody()
-    {
-        _rigidbody.Sleep();
-        _isSleeping = true;
-    }
-
-    private void WakeIfSleeping()
-    {
-        if (!_isSleeping) return;
-        _rigidbody.WakeUp();
-        _isSleeping = false;
     }
 }
