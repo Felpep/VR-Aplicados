@@ -15440,6 +15440,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5537044544854243557, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_SecondaryAxis.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537044544854243557, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: m_SecondaryAxis.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537044544854243557, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
       propertyPath: m_LinearLimit.limit
       value: 0.4
       objectReference: {fileID: 0}
