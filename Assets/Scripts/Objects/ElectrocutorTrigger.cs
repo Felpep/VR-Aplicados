@@ -37,13 +37,13 @@ public class ElectrocutorTrigger : MonoBehaviour
 
         // 3. Castigo al jugador (Validado)
 
-        //if (PlayerResetManager.Instance != null)
-        //{
-        //    PlayerResetManager.Instance.ResetPlayer();
-        //}
-        //else
-        //{
-        //    Debug.LogError("<color=red>[Error Crítico]</color> No hay ningún PlayerResetManager en la escena.");
-        //}
+        if (PlayerResetManager.Instance != null)
+        {
+            PlayerResetManager.Instance.ResetPlayer();
+        }
+        else
+        {
+            Debug.LogError("<color=red>[Error Crítico]</color> No hay ningún PlayerResetManager en la escena.");
+        }
     }
 }
