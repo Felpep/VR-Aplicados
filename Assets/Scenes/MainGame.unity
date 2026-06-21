@@ -16314,6 +16314,59 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.6778891, y: -3.0013652, z: -1.9480774}
     m_Extent: {x: 3.368389, y: 4.3300548, z: 5.2953033}
   m_DirtyAABB: 0
+--- !u!1 &1511028494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511028496}
+  - component: {fileID: 1511028495}
+  m_Layer: 9
+  m_Name: SafeZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1511028495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511028494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.0011039, y: 1.6404423, z: 5.792661}
+  m_Center: {x: -1.0005522, y: 0.32022113, z: -0.48003793}
+--- !u!4 &1511028496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511028494}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.23, z: 3.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524396485
 GameObject:
   m_ObjectHideFlags: 0
@@ -23270,12 +23323,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1206603995}
+  - {fileID: 2078244924}
   - {fileID: 1078849647}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1839501099}
   - {fileID: 1811729271}
   - {fileID: 1245318953}
+  - {fileID: 558880069}
   - {fileID: 1832457292}
   - {fileID: 1121273992}
   - {fileID: 1988569526}
@@ -23291,6 +23346,7 @@ SceneRoots:
   - {fileID: 1064704351}
   - {fileID: 1482227428}
   - {fileID: 774120709}
+  - {fileID: 1105850713}
   - {fileID: 1179214512}
   - {fileID: 347992027}
   - {fileID: 6169954004568864684}
@@ -23312,6 +23368,4 @@ SceneRoots:
   - {fileID: 1090919493}
   - {fileID: 1725689379}
   - {fileID: 1455121344}
-  - {fileID: 1105850713}
-  - {fileID: 2078244924}
-  - {fileID: 558880069}
+  - {fileID: 1511028496}

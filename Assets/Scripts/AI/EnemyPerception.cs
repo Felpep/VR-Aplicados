@@ -79,6 +79,7 @@ public class EnemyPerception : MonoBehaviour
                 _stateMachine.DetectedTarget = null;
             }
 
+
             yield return wait;
         }
     }
