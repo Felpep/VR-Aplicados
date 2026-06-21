@@ -57,4 +57,16 @@ public class MasterMissionController : MonoBehaviour
             Debug.LogWarning($"[MasterController]: Se intentó sumar a '{id}', pero no está registrada en la lista.");
         }
     }
+
+
+
+    public void RemoveCountFromObjective(string id)
+    {
+        MissionCounterData mission = counterMissions.Find(m => m.objectiveID == id);
+        if (mission != null && !mission.isCompleted && mission.currentCount > 0)
+        {
+            mission.currentCount--;
+            Debug.Log($"[MasterController]: Misión '{id}' restó progreso -> {mission.currentCount}/{mission.targetCount}");
+        }
+    }
 }
