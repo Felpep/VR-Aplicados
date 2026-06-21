@@ -16350,8 +16350,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0011039, y: 1.6404423, z: 5.792661}
-  m_Center: {x: -1.0005522, y: 0.32022113, z: -0.48003793}
+  m_Size: {x: 2.2528224, y: 1.6404423, z: 2.8866377}
+  m_Center: {x: -0.62641144, y: 0.32022113, z: 0.97297376}
 --- !u!4 &1511028496
 Transform:
   m_ObjectHideFlags: 0
@@ -16361,7 +16361,7 @@ Transform:
   m_GameObject: {fileID: 1511028494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23, z: 3.7}
+  m_LocalPosition: {x: -0.57, y: 0.23, z: -1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23181,6 +23181,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 843290057680692197, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
+      propertyPath: _safeZoneLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 843290057680692197, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: '_playerDetectionPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 1248005661}
@@ -23191,6 +23195,10 @@ PrefabInstance:
     - target: {fileID: 3323392482837398262, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: m_Name
       value: AI_npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032230013971223151, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
+      propertyPath: m_Speed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5883414484560098711, guid: 5c5124489d123344a98dc6aef92e7438, type: 3}
       propertyPath: m_IsActive

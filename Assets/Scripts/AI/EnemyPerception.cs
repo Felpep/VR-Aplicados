@@ -17,6 +17,9 @@ public class EnemyPerception : MonoBehaviour
     [Header("Raycast Configuration")]
     [SerializeField] private LayerMask _visionLayerMask;
 
+    // Nueva máscara para identificar la Zona Segura de forma limpia
+    [SerializeField] private LayerMask _safeZoneLayerMask;
+
     [Header("Noise Detection")]
     [SerializeField] private float _noiseDetectionRadius = 10f;
 
@@ -60,25 +63,23 @@ public class EnemyPerception : MonoBehaviour
         var wait = new WaitForSeconds(_visionTickRate);
         while (true)
         {
-            bool targetInSight = CheckVision();
-
+            // 1. Si el jefe tiene un objetivo asignado
             if (_stateMachine.DetectedTarget != null)
             {
-                // Lanzamos un chequeo rápido para ver si el jugador está en zona segura
-                // (puedes usar Physics.OverlapSphere para detectar si está en SafeZone)
-                bool isInSafeZone = Physics.CheckSphere(_stateMachine.DetectedTarget.position, 0.5f, LayerMask.GetMask("SafeZone"));
-
-                if (isInSafeZone)
+                // Verificamos si el jugador logró entrar a la Safe Zone
+                if (IsPlayerSafe(_stateMachine.DetectedTarget.position))
                 {
-                    _stateMachine.DetectedTarget = null;
-                    _stateMachine.TransitionTo(_stateMachine.StateSuspicion);
+                    if (_showConsoleLogs) Debug.Log("<color=green>[Perception]</color> ¡El jugador entró a la Safe Zone! Perdiendo rastro.");
+                    LoseTarget();
                 }
+                // Si NO está en Safe Zone y el jefe ya lo está persiguiendo,
+                // NO HACEMOS NADA MÁS. El jefe lo seguirá persiguiendo sin importar obstáculos, rango o ángulo.
             }
-            else if (!targetInSight && _stateMachine.IsInState<ChaseState>())
+            else
             {
-                _stateMachine.DetectedTarget = null;
+                // 2. Si el jefe NO está persiguiendo a nadie, busca activamente al jugador usando su cono de visión normal
+                CheckVision();
             }
-
 
             yield return wait;
         }
@@ -92,6 +93,10 @@ public class EnemyPerception : MonoBehaviour
             return false;
         }
 
+        // Si el jugador ya está en la zona segura, ni intentamos buscarlo
+        if (IsPlayerSafe(_playerDetectionPoints[0].root.position))
+            return false;
+
         for (int i = 0; i < _playerDetectionPoints.Length; i++)
         {
             Transform point = _playerDetectionPoints[i];
@@ -99,38 +104,22 @@ public class EnemyPerception : MonoBehaviour
 
             Vector3 toTarget = point.position - _eyeTransform.position;
 
-            // Filtro 1: Distancia
-            if (toTarget.sqrMagnitude > _visionRangeSqr)
-            {
-                if (_showConsoleLogs) Debug.Log($"<color=gray>[Perception]</color> Punto {point.name} fuera de RANGO ({toTarget.magnitude:F1}m).");
-                continue;
-            }
+            // Filtro 1: Distancia (Solo para detección inicial)
+            if (toTarget.sqrMagnitude > _visionRangeSqr) continue;
 
-            // Filtro 2: Ángulo
-            if (Vector3.Angle(_eyeTransform.forward, toTarget) > _visionAngle * 0.5f)
-            {
-                if (_showConsoleLogs) Debug.Log($"<color=gray>[Perception]</color> Punto {point.name} fuera de ÁNGULO.");
-                continue;
-            }
+            // Filtro 2: Ángulo (Solo para detección inicial)
+            if (Vector3.Angle(_eyeTransform.forward, toTarget) > _visionAngle * 0.5f) continue;
 
-            // Filtro 3: Raycast
+            // Filtro 3: Raycast / Línea de visión (Solo para detección inicial)
             if (Physics.Raycast(_eyeTransform.position, toTarget.normalized, out RaycastHit hit,
                                  _visionRange, _visionLayerMask, QueryTriggerInteraction.Ignore))
             {
                 if (hit.transform == point || hit.transform.IsChildOf(point.root))
                 {
-                    if (_showConsoleLogs) Debug.Log($"<color=green>[Perception]</color> ¡JUGADOR DETECTADO! Impacto directo en: {hit.transform.name}");
+                    if (_showConsoleLogs) Debug.Log($"<color=red>[Perception]</color> ¡JUGADOR AVISTADO! Iniciando persecución implacable.");
                     OnTargetConfirmed(point.root);
                     return true;
                 }
-                else
-                {
-                    if (_showConsoleLogs) Debug.Log($"<color=red>[Perception]</color> Raycast hacia {point.name} OBSTRUIDO por: {hit.transform.name}");
-                }
-            }
-            else
-            {
-                if (_showConsoleLogs) Debug.Log($"<color=magenta>[Perception]</color> Raycast hacia {point.name} no impactó nada. Revisa las capas (Layers).");
             }
         }
 
@@ -139,6 +128,8 @@ public class EnemyPerception : MonoBehaviour
 
     private void OnTargetConfirmed(Transform playerRoot)
     {
+        if (IsPlayerSafe(playerRoot.position)) return;
+
         _stateMachine.DetectedTarget = playerRoot;
 
         if (_stateMachine.IsInState<PatrolState>() || _stateMachine.IsInState<SuspicionState>())
@@ -147,10 +138,29 @@ public class EnemyPerception : MonoBehaviour
         }
     }
 
+    private void LoseTarget()
+    {
+        _stateMachine.DetectedTarget = null;
+
+        // Al entrar a la Safe Zone, el jefe se rinde y pasa a Sospecha (o puedes cambiarlo a StatePatrol directamente si prefieres)
+        if (_stateMachine.IsInState<ChaseState>())
+        {
+            _stateMachine.TransitionTo(_stateMachine.StateSuspicion);
+        }
+    }
+    // Método helper para verificar mediante física si la posición del jugador colisiona con la SafeZone
+    private bool IsPlayerSafe(Vector3 playerPosition)
+    {
+        // Usamos un radio de 0.6f (ajustable a la escala de tu player VR)
+        return Physics.CheckSphere(playerPosition, 0.6f, _safeZoneLayerMask, QueryTriggerInteraction.Collide);
+    }
+
     private void HandleNoise(Vector3 noiseOrigin, float noiseRadius)
     {
-        Vector3 toNoise = noiseOrigin - transform.position;
+        // Si el ruido proviene de una zona segura, el jefe lo ignora (ej. el jugador tiró algo desde su cubículo)
+        if (IsPlayerSafe(noiseOrigin)) return;
 
+        Vector3 toNoise = noiseOrigin - transform.position;
         if (toNoise.sqrMagnitude > _noiseDetectionRadiusSqr) return;
         if (noiseRadius < 1f) return;
 
