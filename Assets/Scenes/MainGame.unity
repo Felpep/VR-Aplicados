@@ -15427,9 +15427,17 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1483400567636500526, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: _forceKinematicDisabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483400567636500526, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
+      propertyPath: _kinematicWhileSelected
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5537044544854243557, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
       propertyPath: m_ZMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5537044544854243557, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
       propertyPath: m_LinearLimit.limit
@@ -15482,48 +15490,12 @@ PrefabInstance:
     - target: {fileID: 8173109435691493932, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
       propertyPath: _grabInteractableSource
       value: 
-      objectReference: {fileID: 1455121347}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6363432225262177048, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1455121347}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
---- !u!54 &1455121345 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 1099121980883669456, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
-  m_PrefabInstance: {fileID: 1455121344}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1455121346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6363432225262177048, guid: b9fdf5b1fc86ed74bbb5c081ca6ba3fb, type: 3}
-  m_PrefabInstance: {fileID: 1455121344}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1455121347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455121346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.GrabInteractable
-  _interactorFilters: []
-  _maxInteractors: -1
-  _maxSelectingInteractors: -1
-  _data: {fileID: 0}
-  _pointableElement: {fileID: 0}
-  _rigidbody: {fileID: 1455121345}
-  _grabSource: {fileID: 0}
-  _useClosestPointAsGrabSource: 0
-  _releaseDistance: 0
-  _resetGrabOnGrabsUpdated: 1
-  _physicsGrabbable: {fileID: 0}
 --- !u!1 &1462705532
 GameObject:
   m_ObjectHideFlags: 0
