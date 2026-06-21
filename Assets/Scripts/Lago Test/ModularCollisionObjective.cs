@@ -24,6 +24,7 @@ public class ModularCollisionObjective : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
+            Debug.Log($"<color=orange>[ModularCollision]</color> Objeto válido ({other.name}) entró en {name}. Destruyéndolo y sumando punto.");
             // Disparamos el evento (que destruirá el objeto)
             OnActionTriggered?.Invoke(other.gameObject);
 

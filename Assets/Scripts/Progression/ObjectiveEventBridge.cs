@@ -23,6 +23,9 @@ public class ObjectiveEventBridge : MonoBehaviour
         }
 
         _signalSent = true;
+
+        Debug.Log($"<color=cyan>[ObjectiveEventBridge]</color> Señal disparada con éxito para completar instantáneamente: {_objectiveData.ObjectiveID}");
+
         GameEventSystem.TriggerObjective(_objectiveData.ObjectiveID);
     }
 }
