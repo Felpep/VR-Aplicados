@@ -10639,6 +10639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tacho Basura (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5610966639561317681, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
+      propertyPath: _sfxClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 21962ddb046c07c46846a9ea0cec0440, type: 3}
     - target: {fileID: 6818267602121698140, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: masterController
       value: 
@@ -40536,6 +40540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tacho Basura (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5610966639561317681, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
+      propertyPath: _sfxClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 21962ddb046c07c46846a9ea0cec0440, type: 3}
     - target: {fileID: 6818267602121698140, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: masterController
       value: 
@@ -42827,7 +42835,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3273872616514875460, guid: 2f9d92d82efa57648a7d355f450e3492, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3273872616514875460, guid: 2f9d92d82efa57648a7d355f450e3492, type: 3}
       propertyPath: OutputAudioMixerGroup

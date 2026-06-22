@@ -32,7 +32,7 @@ public class SafeZoneDetector : MonoBehaviour
                 // OPCIONAL: Desactivar el collider o el objeto para que no vuelva a contar si se mueve
                 // other.enabled = false; 
                 // o destruir la física para que se quede estático:
-                Destroy(other.gameObject.GetComponent<Rigidbody>());
+                //Destroy(other.gameObject.GetComponent<Rigidbody>());
 
                 if (other.TryGetComponent<Collider>(out var col)) col.enabled = false;
 
