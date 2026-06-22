@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Mission_02
   m_EditorClassIdentifier: Assembly-CSharp::SimpleObjectiveData
   _objectiveID: Mission_02
-  _description: Desconectar 3 computadoras
+  _description: Desconectar 5 computadoras

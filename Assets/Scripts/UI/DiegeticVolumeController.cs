@@ -66,38 +66,24 @@ public class DiegeticVolumeController : MonoBehaviour
 
     /// <summary>
     /// API NUEVA: Inyectada por el RadioChannelManager.
-    /// Cambia el canal que estamos controlando y actualiza la rayita a la posición actual del mixer.
+    /// Cambia el canal que estamos controlando, lee el guardado y actualiza la rayita.
     /// </summary>
     public void ChangeActiveMixerParameter(string newParamName)
     {
         _exposedParamName = newParamName;
 
-        // Preguntamos al mixer en qué volumen (dB) está este parámetro actualmente
-        if (_targetMixer.GetFloat(_exposedParamName, out float currentDecibels))
-        {
-            // Convertimos los dB (-80 a 0) de vuelta al sistema lineal de la radio (0 a 100)
-            if (currentDecibels <= MinDecibels + 0.1f)
-            {
-                _currentVolume = 0;
-            }
-            else
-            {
-                // Inversa de Mathf.Log10(normalized) * 20f
-                float normalized = Mathf.Pow(10f, currentDecibels / 20f);
-                _currentVolume = Mathf.RoundToInt(normalized * 100f);
-            }
-        }
-        else
-        {
-            // Si el parámetro no existe (typo), lo ponemos en 50 por seguridad.
-            _currentVolume = 50;
-            Debug.LogWarning($"<color=yellow>[DiegeticVolume]</color> No se pudo leer el parámetro '{_exposedParamName}' del Mixer. Asumiendo 50%.");
-        }
-
-        // Obligamos a la rayita a saltar a su nueva posición sin aplicar cambios al mixer (es solo lectura)
+        // Leemos directamente del disco duro (mucho más exacto y barato que hacer matemática inversa del Mixer)
+        _currentVolume = PlayerPrefs.GetInt(_exposedParamName, 100);
         _currentVolume = Mathf.Clamp(_currentVolume, 0, 100);
+
+        // Obligamos a la rayita a saltar a su posición guardada
         _targetLocalPosition = CalculateIndicatorPosition();
     }
+
+
+
+
+
 
     public void IncreaseVolume()
     {
@@ -123,12 +109,27 @@ public class DiegeticVolumeController : MonoBehaviour
         ProcessVolumeChange();
     }
 
+
+
+
     private void ProcessVolumeChange()
     {
+        // 1. Aplicamos el sonido al Mixer
         ApplyVolumeToMixer();
+
+        // 2. Calculamos visuales
         _targetLocalPosition = CalculateIndicatorPosition();
+
+        // 3. GUARDAMOS EN DISCO (Persistencia)
+        PlayerPrefs.SetInt(_exposedParamName, _currentVolume);
+        PlayerPrefs.Save(); // Asegura la escritura inmediata
+
+        // 4. Feedback
         OnVolumeChangedEvent?.Invoke();
     }
+
+
+
 
     private void ApplyVolumeToMixer()
     {

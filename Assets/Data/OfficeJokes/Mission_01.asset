@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Mission_01
   m_EditorClassIdentifier: Assembly-CSharp::SimpleObjectiveData
   _objectiveID: Mission_01
-  _description: Tirar 10 objetos de oficina a la basura
+  _description: Tirar 10 objetos a la basura
