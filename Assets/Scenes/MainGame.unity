@@ -28586,6 +28586,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: dfb7e84bf77c26045adb0bd3f298049d, type: 2}
+    - target: {fileID: 4629790430818894657, guid: 04bcd2b3f1833114695e894d79b947e5, type: 3}
+      propertyPath: m_AngularDamping
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7176389400762306026, guid: 04bcd2b3f1833114695e894d79b947e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.643
