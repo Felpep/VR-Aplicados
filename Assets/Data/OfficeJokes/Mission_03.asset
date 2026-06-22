@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Mission_03
   m_EditorClassIdentifier: Assembly-CSharp::SimpleObjectiveData
   _objectiveID: Mission_03
-  _description: hacer lo ultimo
+  _description: Matar a todos
