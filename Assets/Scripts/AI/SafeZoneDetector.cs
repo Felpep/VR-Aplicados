@@ -34,7 +34,7 @@ public class SafeZoneDetector : MonoBehaviour
                 // o destruir la física para que se quede estático:
                 //Destroy(other.gameObject.GetComponent<Rigidbody>());
 
-                if (other.TryGetComponent<Collider>(out var col)) col.enabled = false;
+                //if (other.TryGetComponent<Collider>(out var col)) col.enabled = false;
 
                 Debug.Log($"[SafeZone] {other.name} fue asegurado en el cubículo.");
             }

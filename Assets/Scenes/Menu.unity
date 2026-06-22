@@ -9007,6 +9007,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535057864978940397, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _sfxClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fd75c06b2ca15334fad84b3ba2364126, type: 3}
+    - target: {fileID: 4535057864978940397, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _vfxPrefab
       value: 
       objectReference: {fileID: 0}
@@ -16231,6 +16235,10 @@ PrefabInstance:
       propertyPath: _volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4535057864978940397, guid: 2e82bcabc6800504296b588938e59710, type: 3}
+      propertyPath: _sfxClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fd75c06b2ca15334fad84b3ba2364126, type: 3}
     - target: {fileID: 4535057864978940397, guid: 2e82bcabc6800504296b588938e59710, type: 3}
       propertyPath: _vfxPrefab
       value: 
