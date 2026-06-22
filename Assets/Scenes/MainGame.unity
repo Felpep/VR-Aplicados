@@ -28582,6 +28582,10 @@ PrefabInstance:
       propertyPath: _pointableElement
       value: 
       objectReference: {fileID: 454594245}
+    - target: {fileID: 4057413274819724338, guid: 04bcd2b3f1833114695e894d79b947e5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: dfb7e84bf77c26045adb0bd3f298049d, type: 2}
     - target: {fileID: 7176389400762306026, guid: 04bcd2b3f1833114695e894d79b947e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.643
