@@ -13776,7 +13776,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  misionesParaGanar: 3
+  misionesParaGanar: 2
   fadeCanvas: {fileID: 1193229109}
   fadeDuration: 1.5
   audioSource: {fileID: 1025528110}
@@ -27875,7 +27875,7 @@ PrefabInstance:
       objectReference: {fileID: 1193229109}
     - target: {fileID: 3824500220507722703, guid: 2f9d92d82efa57648a7d355f450e3492, type: 3}
       propertyPath: maxCatches
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3824500220507722703, guid: 2f9d92d82efa57648a7d355f450e3492, type: 3}
       propertyPath: respawnPoint
