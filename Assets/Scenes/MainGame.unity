@@ -13776,7 +13776,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  misionesParaGanar: 2
+  misionesParaGanar: 3
   fadeCanvas: {fileID: 1193229109}
   fadeDuration: 1.5
   audioSource: {fileID: 1025528110}
@@ -28466,8 +28466,12 @@ PrefabInstance:
       objectReference: {fileID: 1979855274}
     - target: {fileID: 6902940430552138650, guid: dfa9d80c30924e448a97bf1534631a6e, type: 3}
       propertyPath: _objectives.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6902940430552138650, guid: dfa9d80c30924e448a97bf1534631a6e, type: 3}
+      propertyPath: '_objectives.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c8fcb01b3c9d49a4aaa24e1f0ddfdda4, type: 2}
     - target: {fileID: 6902940430552138650, guid: dfa9d80c30924e448a97bf1534631a6e, type: 3}
       propertyPath: _mirrorTextComponents.Array.size
       value: 1
