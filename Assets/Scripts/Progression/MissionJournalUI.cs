@@ -2,10 +2,18 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Procesa y formatea el listado de misiones del nivel.
+/// Actualiza de forma centralizada tanto el componente local como un array opcional de pizarras espejo.
+/// </summary>
 public class MissionJournalUI : MonoBehaviour
 {
-    [Header("UI Component (3D World Space)")]
-    [SerializeField] private TextMeshProUGUI _textComponent;
+    [Header("UI Principal (Libreta / Mano)")]
+    [SerializeField] private TextMeshProUGUI _primaryTextComponent;
+
+    [Header("Pantallas Espejo (Pizarras de la oficina - Opcional)")]
+    [Tooltip("Arrastrá acá todos los TextMeshPro de las pizarras de la escena que quieras que muestren lo mismo.")]
+    [SerializeField] private TextMeshProUGUI[] _mirrorTextComponents;
 
     [Header("Objectives Tracked")]
     [SerializeField] private SimpleObjectiveData[] _objectives;
@@ -14,13 +22,13 @@ public class MissionJournalUI : MonoBehaviour
     [SerializeField] private ProgressionManager _progressionManager;
 
     private StringBuilder _stringBuilder;
-    private bool _needsUpdate = false; // Flag anti-condiciones de carrera
+    private bool _needsUpdate = false;
 
     private void Awake()
     {
-        if (_textComponent == null)
+        if (_primaryTextComponent == null)
         {
-            Debug.LogError($"[MissionJournalUI] TextMeshPro (3D) no asignado en {name}.", this);
+            Debug.LogError($"[MissionJournalUI] TextMeshPro principal no asignado en {name}.", this);
             enabled = false;
             return;
         }
@@ -31,7 +39,7 @@ public class MissionJournalUI : MonoBehaviour
     private void OnEnable()
     {
         GameEventSystem.OnObjectiveTriggered += RefreshJournalText;
-        _needsUpdate = true; // Forzamos actualización al encender
+        _needsUpdate = true; // Forzamos actualización al encender la escena
     }
 
     private void OnDisable()
@@ -41,15 +49,11 @@ public class MissionJournalUI : MonoBehaviour
 
     private void RefreshJournalText(string objectiveID)
     {
-        // En lugar de actualizar YA MISMO, levantamos una bandera.
-        // Así le damos tiempo al ProgressionManager de registrar el evento primero.
         _needsUpdate = true;
     }
 
     private void LateUpdate()
     {
-        // Si nadie pidió actualización, no gastamos CPU.
-        // Si la pidieron, dibujamos la UI al final del frame.
         if (_needsUpdate)
         {
             UpdateJournalDisplay();
@@ -61,6 +65,7 @@ public class MissionJournalUI : MonoBehaviour
     {
         if (_objectives == null || _objectives.Length == 0 || _progressionManager == null) return;
 
+        // 1. Procesamos la matemática del texto UNA SOLA VEZ
         _stringBuilder.Clear();
         _stringBuilder.AppendLine("<align=center><color=#2C3E50><b>TAREAS DEL DÍA</b></color></align>\n");
 
@@ -81,6 +86,22 @@ public class MissionJournalUI : MonoBehaviour
             }
         }
 
-        _textComponent.text = _stringBuilder.ToString();
+        // Convertimos el StringBuilder a string una sola vez en este frame
+        string finalSheetText = _stringBuilder.ToString();
+
+        // 2. Se lo inyectamos a la pantalla de la mano
+        _primaryTextComponent.text = finalSheetText;
+
+        // 3. Se lo repartimos de forma masiva a las pizarras de la pared si es que existen
+        if (_mirrorTextComponents != null && _mirrorTextComponents.Length > 0)
+        {
+            for (int i = 0; i < _mirrorTextComponents.Length; i++)
+            {
+                if (_mirrorTextComponents[i] != null)
+                {
+                    _mirrorTextComponents[i].text = finalSheetText;
+                }
+            }
+        }
     }
 }
