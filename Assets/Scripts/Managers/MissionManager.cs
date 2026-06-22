@@ -11,6 +11,10 @@ public class MissionManager : MonoBehaviour
     [Tooltip("El ScriptableObject de la misión que se marcará como completada al terminar de robar.")]
     [SerializeField] private BaseObjectiveData _objectiveData;
 
+    [Header("Dependencias")]
+    [Tooltip("Arrastra aquí el MasterMissionController de la escena.")]
+    public MasterMissionController masterController;
+
     [Header("Configuración de Recolección")]
     [SerializeField] private int _objectsRequired = 5;
     private int _currentObjectsStolen = 0;
@@ -25,10 +29,14 @@ public class MissionManager : MonoBehaviour
 
     private void Awake()
     {
-        // Validación de seguridad para que no pruebes el juego y falle en silencio
+        // Validación de seguridad
         if (_objectiveData == null)
         {
-            Debug.LogError($"<color=red>[CollectionMission]</color> CUIDADO: No asignaste el '_objectiveData' en {name}. El sistema global no se enterará cuando termines.");
+            Debug.LogError($"<color=red>[CollectionMission]</color> CUIDADO: No asignaste el '_objectiveData' en {name}.");
+        }
+        if (masterController == null)
+        {
+            Debug.LogError($"<color=red>[CollectionMission]</color> CUIDADO: No asignaste el 'Master Controller' en {name}.");
         }
     }
 
@@ -44,7 +52,7 @@ public class MissionManager : MonoBehaviour
 
         OnObjectStolen?.Invoke();
 
-        // Chequeamos si alcanzamos la meta
+        // Chequeamos si alcanzamos la meta local (los 5 objetos)
         if (_currentObjectsStolen >= _objectsRequired)
         {
             CompleteMission();
@@ -56,17 +64,16 @@ public class MissionManager : MonoBehaviour
         if (_isMissionComplete) return;
 
         _isMissionComplete = true;
-        Debug.Log($"<color=green>[CollectionMission]</color> ¡Misión Completada! Notificando al sistema global...");
+        Debug.Log($"<color=green>[CollectionMission]</color> ¡Micro-Misión Completada! Avisándole al Maestro...");
 
         // 1. Consecuencias locales en la escena (Unity Events)
         OnMissionCompleted?.Invoke();
 
         // 2. CONEXIÓN AL SISTEMA GLOBAL:
-        // Le enviamos el ID seguro del ScriptableObject a tu GameEventSystem.
-        // Esto hará que la libreta lo tache automáticamente y el ProgressionManager avance.
-        if (_objectiveData != null && !string.IsNullOrEmpty(_objectiveData.ObjectiveID))
+        // En lugar de disparar el evento acá, le decimos al Maestro que lo haga.
+        if (masterController != null && _objectiveData != null && !string.IsNullOrEmpty(_objectiveData.ObjectiveID))
         {
-            GameEventSystem.TriggerObjective(_objectiveData.ObjectiveID);
+            masterController.AddCountToObjective(_objectiveData.ObjectiveID);
         }
     }
 }

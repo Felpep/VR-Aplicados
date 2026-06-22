@@ -31,7 +31,7 @@ public class MasterMissionController : MonoBehaviour
 
     [Header("Progreso Global del Nivel")]
     [Tooltip("Cantidad de misiones distintas que se deben completar para ganar")]
-    public int misionesParaGanar = 2;
+    public int misionesParaGanar = 3;
     private int misionesCompletadas = 0;
     private bool isTransitioning = false; // Evita que la secuencia se dispare dos veces
 
