@@ -28,8 +28,14 @@ public class VRFPSCounter : MonoBehaviour
             int fps = Mathf.RoundToInt(frameCount / timer);
             fpsText.text = $"FPS: {fps}";
 
-            // Feedback visual Senior: Verde (Bien), Amarillo (Peligro), Rojo (Mareo inminente)
-            // Nota: 72 FPS es el estándar mínimo aceptable en Meta Quest
+            // --- NUEVA ALERTA DE RENDIMIENTO SENIOR ---
+            // Si baja de 72, disparamos una advertencia amarilla en la consola
+            if (fps < 72)
+            {
+                Debug.LogWarning($"[ALERTA VR]: Los FPS cayeron a {fps}. Revisa qué está consumiendo recursos.");
+            }
+
+            // Feedback visual: Verde (Bien), Amarillo (Peligro), Rojo (Mareo inminente)
             if (fps >= 70)
                 fpsText.color = Color.green;
             else if (fps >= 50)
