@@ -25822,6 +25822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_tv (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7579493446111446874, guid: 500e25948fbfa3c4a9bf620c6601bde6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8207737922192430328, guid: 500e25948fbfa3c4a9bf620c6601bde6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5127
