@@ -29466,6 +29466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clock_WallRound
       objectReference: {fileID: 0}
+    - target: {fileID: 1828553533823636012, guid: 2f80b576a92323141b1af9fd88106b4c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
