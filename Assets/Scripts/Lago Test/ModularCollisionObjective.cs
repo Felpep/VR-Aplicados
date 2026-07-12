@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections; // Necesario para usar Corrutinas (IEnumerator)
+using Oculus.Interaction; // Necesario para interactuar con los Grabbables de Meta
 
 [RequireComponent(typeof(Collider))]
 public class ModularCollisionObjective : MonoBehaviour
@@ -11,6 +13,12 @@ public class ModularCollisionObjective : MonoBehaviour
     [Header("Dependencies")]
     [Tooltip("Arrastra aquí tu objeto MasterMissionController de la escena.")]
     public MasterMissionController masterController;
+
+    [Header("Snap Configuration")]
+    [Tooltip("El punto exacto (Transform) donde quieres que se posicione el objeto antes de morir.")]
+    [SerializeField] private Transform snapPoint;
+    [Tooltip("Tiempo en segundos que el objeto se queda congelado antes de borrarse.")]
+    [SerializeField] private float delayBeforeDestroy = 1.0f;
 
     [Header("Rejection Physics")]
     [Tooltip("Fuerza con la que el tacho levanta el objeto hacia arriba (bajala para que no llegue al techo).")]
@@ -24,6 +32,13 @@ public class ModularCollisionObjective : MonoBehaviour
     private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
+
+        // Pequeño chequeo de seguridad
+        if (snapPoint == null)
+        {
+            Debug.LogWarning($"<color=yellow>[ModularCollision]</color> No asignaste un Snap Point en {name}. Usando la posición del propio Tacho.");
+            snapPoint = this.transform;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -31,13 +46,8 @@ public class ModularCollisionObjective : MonoBehaviour
         // 1. Si ES el objeto correcto (tiene el tag esperado)
         if (other.CompareTag(targetTag))
         {
-            Debug.Log($"<color=green>[ModularCollision]</color> Objeto válido ({other.name}) entró en {name}. Destruyéndolo y sumando punto.");
-
-            // Disparamos el evento (que destruirá el objeto)
-            OnActionTriggered?.Invoke(other.gameObject);
-
-            // Notificamos al maestro inmediatamente
-            NotifyMaster();
+            // Iniciamos el proceso de Snap y posterior Destrucción
+            StartCoroutine(SnapAndProcessObjective(other));
         }
         // 2. Si NO ES el objeto correcto (cualquier otra tag o untagged)
         else
@@ -48,26 +58,71 @@ public class ModularCollisionObjective : MonoBehaviour
 
             if (rb != null)
             {
-                // Frenamos la caída original
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
 
-                // Generamos una dirección aleatoria puramente horizontal (ejes X y Z)
                 Vector3 randomOutwardDirection = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized;
-
-                // Combinamos la fuerza hacia arriba con la fuerza lateral aleatoria
                 Vector3 ejectionVector = (Vector3.up * upwardForce) + (randomOutwardDirection * outwardForce);
 
-                // Lo disparamos
                 rb.AddForce(ejectionVector, ForceMode.Impulse);
-
-                // (Opcional) Le damos un pequeño giro aleatorio para que se vea más caótico y divertido
                 rb.AddTorque(Random.insideUnitSphere * outwardForce, ForceMode.Impulse);
             }
         }
     }
 
-    // NUEVO MÉTODO PUENTE
+    // ... (Todo el resto del script queda exactamente igual)
+
+    private IEnumerator SnapAndProcessObjective(Collider other)
+    {
+        Debug.Log($"<color=green>[ModularCollision]</color> ¡Objeto válido detectado! ({other.name}). Snapeando...");
+
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        Grabbable grabbable = other.GetComponent<Grabbable>();
+
+        if (grabbable != null) grabbable.enabled = false;
+
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        // Buscamos la raíz de LA PELOTA (no del tacho)
+        GameObject rootObject = other.transform.parent != null ? other.transform.parent.gameObject : other.gameObject;
+
+        // La metemos temporalmente en el tacho para que se mueva allí
+        rootObject.transform.position = snapPoint.position;
+        rootObject.transform.rotation = snapPoint.rotation;
+        rootObject.transform.SetParent(snapPoint);
+
+        // Esperamos el segundo de gracia
+        yield return new WaitForSeconds(delayBeforeDestroy);
+
+        // --- ¡AQUÍ ESTÁ EL SEGURO ANTI-DESTRUCCIÓN DEL TACHO! ---
+        // Desparentamos la pelota del tacho JUSTO ANTES de destruirla.
+        // Así 'transform.parent' volverá a ser nulo o el original, salvando al tacho.
+        rootObject.transform.SetParent(null);
+
+        // Ahora sí, llamamos de forma segura al evento pasándole el objeto ingresado
+        OnActionTriggered?.Invoke(other.gameObject);
+
+        NotifyMaster();
+    }
+
+    // Tu función original de destrucción ahora es 100% segura gracias al paso anterior
+    public void DestroyDetectedObject(GameObject targetToDestroy)
+    {
+        if (targetToDestroy != null)
+        {
+            // Como ya la despegamos del tacho, esto solo borrará el prefab de la pelota
+            if (targetToDestroy.transform.parent != null)
+                Destroy(targetToDestroy.transform.parent.gameObject);
+            else
+                Destroy(targetToDestroy);
+        }
+    }
+
     public void NotifyMaster()
     {
         if (masterController != null && !string.IsNullOrEmpty(objectiveID))
@@ -80,14 +135,5 @@ public class ModularCollisionObjective : MonoBehaviour
         }
     }
 
-    public void DestroyDetectedObject(GameObject targetToDestroy)
-    {
-        if (targetToDestroy != null)
-        {
-            if (targetToDestroy.transform.parent != null)
-                Destroy(targetToDestroy.transform.parent.gameObject);
-            else
-                Destroy(targetToDestroy);
-        }
-    }
+   
 }
