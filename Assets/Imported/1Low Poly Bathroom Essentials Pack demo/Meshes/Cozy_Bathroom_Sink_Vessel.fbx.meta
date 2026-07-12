@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 7903250ce201d8a4d8d815115e170ee9
+AssetOrigin:
+  serializedVersion: 1
+  productId: 336514
+  packageName: Cozy Bathroom Interiors Demo
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Bathroom Essentials Pack demo/Meshes/Cozy_Bathroom_Sink_Vessel.fbx
+  uploadId: 796230
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 24200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -21,8 +28,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -53,7 +58,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -63,6 +68,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -112,10 +120,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 336514
-  packageName: Cozy Bathroom Interiors Demo
-  packageVersion: 1.0
-  assetPath: Assets/Low Poly Bathroom Essentials Pack demo/Meshes/Cozy_Bathroom_Sink_Vessel.fbx
-  uploadId: 796230
