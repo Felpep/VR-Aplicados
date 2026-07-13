@@ -2,16 +2,11 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 
-/// <summary>
-/// Controla un canal de AudioMixer mediante botones físicos VR (Poke).
-/// Incluye feedback visual de posición y color sin generar basura en memoria (GC Clean).
-/// Adaptado para soportar cambio dinámico de canales.
-/// </summary>
 public class DiegeticVolumeController : MonoBehaviour
 {
     [Header("AudioMixer")]
     [SerializeField] private AudioMixer _targetMixer;
-    private string _exposedParamName = "MasterVolume"; // Ahora se inyecta desde el Manager
+    private string _exposedParamName = "MasterVolume";
 
     [Header("Indicador Visual (Movimiento)")]
     [SerializeField] private Transform _indicatorTarget;
@@ -35,6 +30,7 @@ public class DiegeticVolumeController : MonoBehaviour
 
     private int _currentVolume;
     private Vector3 _targetLocalPosition;
+    private float _totalDistance; // Precalculada para evitar coste en Update
 
     private MaterialPropertyBlock _propBlock;
     private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
@@ -49,11 +45,13 @@ public class DiegeticVolumeController : MonoBehaviour
         }
 
         _propBlock = new MaterialPropertyBlock();
-        // Nota: La inicialización fuerte ahora ocurre cuando el Manager inyecta el primer canal.
+        // Precalculamos la distancia una sola vez en la vida del script
+        _totalDistance = Vector3.Distance(_minLocalPosition, _maxLocalPosition);
     }
 
     private void Update()
     {
+        // CORTE QUIRÚRGICO: Si ya llegó, cero cálculo de CPU y cero actualizaciones a la GPU
         if (_indicatorTarget.localPosition == _targetLocalPosition) return;
 
         _indicatorTarget.localPosition = Vector3.MoveTowards(
@@ -61,103 +59,63 @@ public class DiegeticVolumeController : MonoBehaviour
             _targetLocalPosition,
             _movementSmoothness * Time.deltaTime);
 
+        // Se ejecuta ÚNICAMENTE durante el deslizamiento
         UpdateIndicatorColor();
     }
 
-    /// <summary>
-    /// API NUEVA: Inyectada por el RadioChannelManager.
-    /// Cambia el canal que estamos controlando, lee el guardado y actualiza la rayita.
-    /// </summary>
     public void ChangeActiveMixerParameter(string newParamName)
     {
         _exposedParamName = newParamName;
-
-        // Leemos directamente del disco duro (mucho más exacto y barato que hacer matemática inversa del Mixer)
         _currentVolume = PlayerPrefs.GetInt(_exposedParamName, 100);
         _currentVolume = Mathf.Clamp(_currentVolume, 0, 100);
 
-        // Obligamos a la rayita a saltar a su posición guardada
         _targetLocalPosition = CalculateIndicatorPosition();
+        UpdateIndicatorColor(); // Forzar actualización visual única al cambiar de canal
     }
-
-
-
-
-
 
     public void IncreaseVolume()
     {
         if (string.IsNullOrEmpty(_exposedParamName)) return;
-
         int previousVolume = _currentVolume;
         _currentVolume = Mathf.Clamp(_currentVolume + _volumeStep, 0, 100);
-
         if (_currentVolume == previousVolume && _currentVolume == 100) return;
-
         ProcessVolumeChange();
     }
 
     public void DecreaseVolume()
     {
         if (string.IsNullOrEmpty(_exposedParamName)) return;
-
         int previousVolume = _currentVolume;
         _currentVolume = Mathf.Clamp(_currentVolume - _volumeStep, 0, 100);
-
         if (_currentVolume == previousVolume && _currentVolume == 0) return;
-
         ProcessVolumeChange();
     }
 
-
-
-
     private void ProcessVolumeChange()
     {
-        // 1. Aplicamos el sonido al Mixer
         ApplyVolumeToMixer();
-
-        // 2. Calculamos visuales
         _targetLocalPosition = CalculateIndicatorPosition();
-
-        // 3. GUARDAMOS EN DISCO (Persistencia)
         PlayerPrefs.SetInt(_exposedParamName, _currentVolume);
-        PlayerPrefs.Save(); // Asegura la escritura inmediata
-
-        // 4. Feedback
+        PlayerPrefs.Save();
         OnVolumeChangedEvent?.Invoke();
     }
 
-
-
-
     private void ApplyVolumeToMixer()
     {
-        float decibels;
-        if (_currentVolume <= 0)
-        {
-            decibels = MinDecibels;
-        }
-        else
-        {
-            float normalized = _currentVolume / 100f;
-            decibels = Mathf.Log10(normalized) * 20f;
-            decibels = Mathf.Clamp(decibels, MinDecibels, MaxDecibels);
-        }
+        float decibels = _currentVolume <= 0 ? MinDecibels : Mathf.Clamp(Mathf.Log10(_currentVolume / 100f) * 20f, MinDecibels, MaxDecibels);
         _targetMixer.SetFloat(_exposedParamName, decibels);
     }
 
     private Vector3 CalculateIndicatorPosition()
     {
-        float normalized = _currentVolume / 100f;
-        return Vector3.Lerp(_minLocalPosition, _maxLocalPosition, normalized);
+        return Vector3.Lerp(_minLocalPosition, _maxLocalPosition, _currentVolume / 100f);
     }
 
     private void UpdateIndicatorColor()
     {
-        float distTotal = Vector3.Distance(_minLocalPosition, _maxLocalPosition);
+        // Optimizado: usando la distancia precalculada sin instanciar vectores intermedios
         float distCurrent = Vector3.Distance(_minLocalPosition, _indicatorTarget.localPosition);
-        float visualPercent = distTotal > 0.001f ? (distCurrent / distTotal) : 0f;
+        float visualPercent = _totalDistance > 0.001f ? (distCurrent / _totalDistance) : 0f;
 
         Color lerpedColor = Color.Lerp(_minVolumeColor, _maxVolumeColor, visualPercent);
 

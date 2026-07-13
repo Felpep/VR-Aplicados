@@ -69,10 +69,6 @@ public class NPCReactionComponent : MonoBehaviour
             Vector3 torqueForce = new Vector3(localDirection.z, localDirection.x, -localDirection.y) * intensity * _springForceMultiplier;
             _neckSpring.ApplyExternalForce(torqueForce);
         }
-
-#if UNITY_EDITOR
-        Debug.Log($"[NPCReaction] {name} golpeado físicamente con intensidad: {intensity}.");
-#endif
     }
 
     /// <summary>

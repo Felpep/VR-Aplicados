@@ -29,9 +29,13 @@ public class ModularCollisionObjective : MonoBehaviour
     [Header("Local Consequences (Unity Events)")]
     public UnityEvent<GameObject> OnActionTriggered;
 
+    private WaitForSeconds _cachedWaitInstruction;
+
     private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
+
+        _cachedWaitInstruction = new WaitForSeconds(delayBeforeDestroy);
 
         // Pequeño chequeo de seguridad
         if (snapPoint == null)
@@ -61,8 +65,13 @@ public class ModularCollisionObjective : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
 
-                Vector3 randomOutwardDirection = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized;
-                Vector3 ejectionVector = (Vector3.up * upwardForce) + (randomOutwardDirection * outwardForce);
+                float randomX = Random.Range(-1f, 1f);
+                float randomZ = Random.Range(-1f, 1f);
+
+                Vector3 ejectionVector;
+                ejectionVector.x = randomX * outwardForce;
+                ejectionVector.y = upwardForce;
+                ejectionVector.z = randomZ * outwardForce;
 
                 rb.AddForce(ejectionVector, ForceMode.Impulse);
                 rb.AddTorque(Random.insideUnitSphere * outwardForce, ForceMode.Impulse);
@@ -96,12 +105,8 @@ public class ModularCollisionObjective : MonoBehaviour
         rootObject.transform.rotation = snapPoint.rotation;
         rootObject.transform.SetParent(snapPoint);
 
-        // Esperamos el segundo de gracia
-        yield return new WaitForSeconds(delayBeforeDestroy);
+        yield return _cachedWaitInstruction;
 
-        // --- ¡AQUÍ ESTÁ EL SEGURO ANTI-DESTRUCCIÓN DEL TACHO! ---
-        // Desparentamos la pelota del tacho JUSTO ANTES de destruirla.
-        // Así 'transform.parent' volverá a ser nulo o el original, salvando al tacho.
         rootObject.transform.SetParent(null);
 
         // Ahora sí, llamamos de forma segura al evento pasándole el objeto ingresado

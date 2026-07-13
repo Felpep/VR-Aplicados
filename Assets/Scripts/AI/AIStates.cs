@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 // ══════════════════════════════════════════════════════════════════════════════
 // PATROL STATE
@@ -33,11 +34,6 @@ public class PatrolState : BaseAIState
         {
             _waitTimer -= Time.deltaTime;
 
-//#if UNITY_EDITOR
-//            // Muestra el tiempo restante en el entorno para debuguear la espera
-//            Vector3 labelPos = owner.transform.position + Vector3.up * 2.5f;
-//            UnityEditor.Handles.Label(labelPos, $"Escribiendo... {_waitTimer:F1}s");
-//#endif
 
             if (_waitTimer <= 0f)
             {
@@ -106,58 +102,66 @@ public class SuspicionState : BaseAIState
 // ══════════════════════════════════════════════════════════════════════════════
 public class ChaseState : BaseAIState
 {
-    private float _lostTargetTimer;
     private const float LostTargetTimeout = 3f;
-
-    private float _pathCountdown;
     private const float PathRefreshRate = 0.15f;
+
+    private float _lostTargetTimer;
+    private Coroutine _pathRoutine;
 
     public override void Enter(AIStateMachine owner)
     {
         _lostTargetTimer = LostTargetTimeout;
-        _pathCountdown = 0f;
         owner.Movement.SetChaseMode();
-
         owner.GetComponent<AIAnimationBridge>().SetAlertState(true);
+
+        // OPTIMIZACIÓN MÁXIMA: Encendemos el motor de rutas en un hilo asíncrono controlado
+        _pathRoutine = owner.StartCoroutine(PathCalculationRoutine(owner));
     }
 
     public override void UpdateState(AIStateMachine owner)
     {
         if (owner.DetectedTarget == null)
         {
-            HandleTargetLost(owner);
+            _lostTargetTimer -= Time.deltaTime;
+            if (_lostTargetTimer <= 0f)
+            {
+                owner.TransitionTo(owner.StateSuspicion);
+            }
             return;
         }
 
+        // Si recuperamos el target en el mismo frame, reseteamos el temporizador de pérdida
         _lostTargetTimer = LostTargetTimeout;
-        _pathCountdown -= Time.deltaTime;
-
-        if (_pathCountdown <= 0f)
-        {
-            _pathCountdown = PathRefreshRate;
-            owner.Movement.ChaseTarget(owner.DetectedTarget);
-        }
     }
 
     public override void Exit(AIStateMachine owner)
     {
+        // Limpieza mandatoria de corrutinas para evitar hilos huérfanos en memoria RAM
+        if (_pathRoutine != null)
+        {
+            owner.StopCoroutine(_pathRoutine);
+            _pathRoutine = null;
+        }
+
         owner.DetectedTarget = null;
         owner.GetComponent<AIAnimationBridge>().SetAlertState(false);
     }
 
-    private void HandleTargetLost(AIStateMachine owner)
+    /// <summary>
+    /// Motor asíncrono de cálculo de NavMesh. Se ejecuta estrictamente 6 veces por segundo,
+    /// liberando a la CPU de evaluar matemáticas inútiles en los 90 FPS nativos de VR.
+    /// </summary>
+    private IEnumerator PathCalculationRoutine(AIStateMachine owner)
     {
-        _lostTargetTimer -= Time.deltaTime;
+        var wait = new WaitForSeconds(PathRefreshRate);
 
-//#if UNITY_EDITOR
-//        // Dibuja un texto flotante sobre la cabeza de la IA en el editor indicando el tiempo de escape restante
-//        Vector3 labelPosition = owner.transform.position + Vector3.up * 2.2f;
-//        UnityEditor.Handles.Label(labelPosition, $"Perdiendo rastro: {_lostTargetTimer:F1}s");
-//#endif
-
-        if (_lostTargetTimer <= 0f)
+        while (true)
         {
-            owner.TransitionTo(owner.StateSuspicion);
+            if (owner.DetectedTarget != null && owner.Movement.IsAgentReady)
+            {
+                owner.Movement.ChaseTarget(owner.DetectedTarget);
+            }
+            yield return wait;
         }
     }
 }

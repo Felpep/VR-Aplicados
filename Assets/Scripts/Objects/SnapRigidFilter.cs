@@ -29,11 +29,6 @@ public class SnapRigidFilter : MonoBehaviour, IGameObjectFilter
         // Comprobamos si el objeto entrante está dentro de nuestra lista permitida
         bool isAllowed = _allowedObjects.Contains(incomingRB);
 
-#if UNITY_EDITOR
-        if (!isAllowed)
-            Debug.Log($"<color=yellow>[Filter]</color> Zona {name} ignoró a {gameObjectToFilter.name} porque no está en la lista.");
-#endif
-
         return isAllowed;
     }
 }
