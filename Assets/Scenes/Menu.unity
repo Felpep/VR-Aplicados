@@ -6190,6 +6190,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 66e366725ae0923459743541c12ac6a1, type: 2}
+    - target: {fileID: -1091666084095300770, guid: 14d20ddba917e9648b0d2a69ce451f1c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 14d20ddba917e9648b0d2a69ce451f1c, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -6202,6 +6206,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 66e366725ae0923459743541c12ac6a1, type: 2}
+    - target: {fileID: 3469212930968678428, guid: 14d20ddba917e9648b0d2a69ce451f1c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673454788605247761, guid: 14d20ddba917e9648b0d2a69ce451f1c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7896083926253897281, guid: 14d20ddba917e9648b0d2a69ce451f1c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -13113,7 +13125,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1601384233
 BoxCollider:
@@ -13733,7 +13745,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1716562399
 BoxCollider:
