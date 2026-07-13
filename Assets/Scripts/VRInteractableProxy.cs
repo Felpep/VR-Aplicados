@@ -20,9 +20,15 @@ public class VRInteractableProxy : MonoBehaviour
 
     private void Awake()
     {
-        // Auto-recuperación para ahorrar tiempo en el editor
+        InitializeIfNeeded();
+    }
+
+    private void InitializeIfNeeded()
+    {
         if (_grabbable == null) _grabbable = GetComponent<Grabbable>();
-        if (_grabInteractable == null) _grabInteractable = GetComponentInChildren<GrabInteractable>();
+
+        // Buscamos de forma robusta tanto en el objeto como en la jerarquía interna del prefab
+        if (_grabInteractable == null) _grabInteractable = GetComponentInChildren<GrabInteractable>(true);
     }
 
     /// <summary>
@@ -30,7 +36,10 @@ public class VRInteractableProxy : MonoBehaviour
     /// </summary>
     public void SetInteractionState(bool targetState)
     {
-        if (_isActive == targetState) return; // Si ya está en ese estado, no hacemos nada
+        // Forzamos que las referencias estén cacheadas antes de apagar/prender
+        InitializeIfNeeded();
+
+        if (_isActive == targetState) return;
         _isActive = targetState;
 
         if (_grabbable != null) _grabbable.enabled = targetState;

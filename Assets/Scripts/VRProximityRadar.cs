@@ -16,10 +16,9 @@ public class VRProximityRadar : MonoBehaviour
     [Tooltip("La capa (Layer) donde están asignados tus objetos interactuables.")]
     [SerializeField] private LayerMask _interactableLayer;
 
-    // Búfer físico estático para no generar basura en memoria RAM
-    private readonly Collider[] _radarResultsBuffer = new Collider[32];
+    // Aumentamos el búfer a 64 para absorber ráfagas masivas de objetos de oficina (Zero Alloc)
+    private readonly Collider[] _radarResultsBuffer = new Collider[64];
 
-    // HashSets para comparar de forma O(1) qué objetos entraron y cuáles salieron
     private readonly HashSet<VRInteractableProxy> _currentNearbyProxies = new HashSet<VRInteractableProxy>();
     private readonly HashSet<VRInteractableProxy> _previouslyNearbyProxies = new HashSet<VRInteractableProxy>();
 
@@ -30,6 +29,12 @@ public class VRProximityRadar : MonoBehaviour
         _cachedWait = new WaitForSeconds(_scanInterval);
     }
 
+    private void Start()
+    {
+        // EJECUCIÓN CRÍTICA: Forzamos un culling inmediato de la oficina en el primer frame
+        InitialWarmUpScan();
+    }
+
     private void OnEnable()
     {
         StartCoroutine(RadarScanRoutine());
@@ -38,18 +43,65 @@ public class VRProximityRadar : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        // Por seguridad, si el radar se apaga, reactivamos todo lo que estaba en memoria
         foreach (var proxy in _currentNearbyProxies)
         {
             if (proxy != null) proxy.SetInteractionState(true);
         }
     }
 
+    /// <summary>
+    /// Escaneo de calentamiento único. Encuentra todos los proxies de la escena.
+    /// Enciende los que están dentro del radio y apaga instantáneamente los que están fuera.
+    /// </summary>
+    private void InitialWarmUpScan()
+    {
+        // 1. Buscamos de forma masiva TODOS los proxies que existen en la oficina actualmente
+        VRInteractableProxy[] allProxiesInScene = Object.FindObjectsByType<VRInteractableProxy>(FindObjectsSortMode.None);
+
+        // 2. Lanzamos el pulso de radar físico inicial para saber qué tiene el jugador cerca
+        int hitCount = Physics.OverlapSphereNonAlloc(
+            transform.position,
+            _radarRadius,
+            _radarResultsBuffer,
+            _interactableLayer,
+            QueryTriggerInteraction.Collide
+        );
+
+        // 3. Registramos los que sí están cerca en el inicio
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider col = _radarResultsBuffer[i];
+            if (col == null) continue;
+
+            VRInteractableProxy proxy = col.GetComponentInParent<VRInteractableProxy>();
+            if (proxy == null) continue;
+
+            _currentNearbyProxies.Add(proxy);
+        }
+
+        // Limpiamos el búfer físico inmediatamente para el bucle runtime
+        System.Array.Clear(_radarResultsBuffer, 0, _radarResultsBuffer.Length);
+
+        // 4. Sintonizamos los estados en cascada
+        for (int i = 0; i < allProxiesInScene.Length; i++)
+        {
+            VRInteractableProxy proxy = allProxiesInScene[i];
+            if (proxy == null) continue;
+
+            // Si está en nuestra lista de cercanía, se queda prendido; si no, se apaga de un golpe
+            bool shouldBeActive = _currentNearbyProxies.Contains(proxy);
+            proxy.SetInteractionState(shouldBeActive);
+        }
+
+#if UNITY_EDITOR
+        Debug.Log($"<color=lime>[VRRadar]</color> Warm-up completado. {allProxiesInScene.Length} proxies evaluados en el inicio.");
+#endif
+    }
+
     private IEnumerator RadarScanRoutine()
     {
         while (true)
         {
-            // 1. Intercambiamos los contenedores para saber qué teníamos en el frame anterior
             _previouslyNearbyProxies.Clear();
             foreach (var proxy in _currentNearbyProxies)
             {
@@ -57,7 +109,6 @@ public class VRProximityRadar : MonoBehaviour
             }
             _currentNearbyProxies.Clear();
 
-            // 2. Lanzamos el pulso de física ultra optimizado (NonAlloc)
             int hitCount = Physics.OverlapSphereNonAlloc(
                 transform.position,
                 _radarRadius,
@@ -66,29 +117,24 @@ public class VRProximityRadar : MonoBehaviour
                 QueryTriggerInteraction.Collide
             );
 
-            // 3. Procesamos los objetos que están cerca actualmente
             for (int i = 0; i < hitCount; i++)
             {
                 Collider col = _radarResultsBuffer[i];
                 if (col == null) continue;
 
-                // Buscamos el Proxy en el objeto o sus padres (por si el collider está en un hijo)
                 VRInteractableProxy proxy = col.GetComponentInParent<VRInteractableProxy>();
                 if (proxy == null) continue;
 
                 _currentNearbyProxies.Add(proxy);
 
-                // Si no estaba activo, lo encendemos (acaba de entrar al rango del jugador)
                 if (!proxy.IsActive)
                 {
                     proxy.SetInteractionState(true);
                 }
             }
 
-            // 4. Limpiamos el búfer físico para el próximo tick
             System.Array.Clear(_radarResultsBuffer, 0, _radarResultsBuffer.Length);
 
-            // 5. Los objetos que estaban antes pero ya no están cerca, se apagan de inmediato
             foreach (var oldProxy in _previouslyNearbyProxies)
             {
                 if (oldProxy != null && !_currentNearbyProxies.Contains(oldProxy))

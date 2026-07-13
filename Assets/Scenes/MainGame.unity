@@ -10042,7 +10042,7 @@ MonoBehaviour:
   capasSolidas:
     serializedVersion: 2
     m_Bits: 0
-  componenteGrabbable: {fileID: 454594245}
+  _grabInteractable: {fileID: 0}
   _checkInterval: 0.1
 --- !u!1 &652122775
 GameObject:
@@ -13148,7 +13148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365de3c709af7754faed9cb521770173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRProximityRadar
-  _radarRadius: 4
+  _radarRadius: 3
   _scanInterval: 0.2
   _interactableLayer:
     serializedVersion: 2
