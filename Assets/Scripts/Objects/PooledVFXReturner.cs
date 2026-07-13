@@ -32,4 +32,9 @@ public class PooledVFXReturner : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public GameObject GetPrefabKey()
+    {
+        return _prefabKey;
+    }
 }
