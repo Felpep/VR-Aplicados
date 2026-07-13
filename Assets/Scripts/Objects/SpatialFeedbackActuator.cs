@@ -2,10 +2,6 @@ using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
 
-/// <summary>
-/// Orquesta feedback tridimensional sincrónico (audio, VFX, hápticos).
-/// Autogestiona la búsqueda de mandos VR usando un radar físico esférico en el instante del disparo.
-/// </summary>
 public class SpatialFeedbackActuator : MonoBehaviour
 {
     [Header("Audio (Opcional)")]
@@ -13,54 +9,39 @@ public class SpatialFeedbackActuator : MonoBehaviour
     [SerializeField] private float _volume = 1f;
 
     [Header("VFX (Opcional)")]
-    [Tooltip("El prefab del efecto visual que tiene colgado el script PooledVFXReturner")]
     [SerializeField] private GameObject _vfxPrefab;
 
     [Header("Haptics Avanzados (Radar Autónomo)")]
     [SerializeField] private bool _triggerHaptics = true;
-    [Tooltip("Radio en metros para buscar el mando del jugador alrededor de este objeto.")]
     [SerializeField] private float _radarRadius = 1.5f;
     [SerializeField] private float _hapticDuration = 0.2f;
     [SerializeField] private float _hapticAmplitude = 0.5f;
 
-    [Header("Debug / Controller Quick Test")]
-    [SerializeField] private OVRInput.Button _testControllerButton = OVRInput.Button.One;
-    [SerializeField] private OVRInput.Controller _testControllerActive = OVRInput.Controller.RTouch;
-
-    // Buffer estático para el OverlapSphere. Evita que Android cree basura en memoria (GC Clean)
     private readonly Collider[] _radarBuffer = new Collider[8];
 
-    /// <summary>
-    /// API UNIVERSAL: Conéctalo a CUALQUIER UnityEvent (OnLightsOff, OnActionTriggered, misiones, etc).
-    /// Ejecuta Audio, VFX y busca automáticamente mandos cercanos mediante un radar físico.
-    /// </summary>
+    // OPTIMIZACIÓN CORE: Lista persistente en RAM para evitar allocations en runtime (Zero Alloc)
+    private readonly List<InputDevice> _cachedDevicesBuffer = new List<InputDevice>(2);
+
     public void TriggerFeedback()
     {
-        // 1. Disparar Sonido
         if (_sfxClip != null && AudioManager.Instance != null)
         {
             AudioManager.Instance.PlaySFX3D(_sfxClip, transform.position, _volume);
         }
 
-        // 2. Disparar Partículas
         if (_vfxPrefab != null && GameObjectPoolManager.Instance != null)
         {
             GameObjectPoolManager.Instance.Spawn(_vfxPrefab, transform.position, transform.rotation);
         }
 
-        // 3. Radar de Hápticos
         if (_triggerHaptics)
         {
             ScanAndVibrateNearbyControllers();
         }
     }
 
-    /// <summary>
-    /// Lanza una esfera física invisible para buscar tags de mandos VR ("LeftHand" o "RightHand")
-    /// </summary>
     private void ScanAndVibrateNearbyControllers()
     {
-        // Lanzamos el radar esférico optimizado
         int hits = Physics.OverlapSphereNonAlloc(transform.position, _radarRadius, _radarBuffer);
 
         for (int i = 0; i < hits; i++)
@@ -70,41 +51,22 @@ public class SpatialFeedbackActuator : MonoBehaviour
 
             InputDeviceCharacteristics targetHand;
 
-            // Verificamos si lo que entró en el radar es un mando por su Tag
             if (col.CompareTag("LeftHand")) targetHand = InputDeviceCharacteristics.Left;
             else if (col.CompareTag("RightHand")) targetHand = InputDeviceCharacteristics.Right;
-            else continue; // Si no es un mando, seguimos buscando en los otros hits
+            else continue;
 
-            // Si encontramos un mando válido, enviamos la vibración nativa de Meta Quest
-            var devices = new List<InputDevice>();
-            InputDevices.GetDevicesWithCharacteristics(targetHand | InputDeviceCharacteristics.Controller, devices);
+            // OPTIMIZACIÓN DE MEMORIA: Limpiamos el búfer y evitamos el 'new List' interno de Unity
+            _cachedDevicesBuffer.Clear();
+            InputDevices.GetDevicesWithCharacteristics(targetHand | InputDeviceCharacteristics.Controller, _cachedDevicesBuffer);
 
-            if (devices.Count > 0 && devices[0].TryGetHapticCapabilities(out HapticCapabilities capabilities) && capabilities.supportsImpulse)
+            if (_cachedDevicesBuffer.Count > 0)
             {
-                devices[0].SendHapticImpulse(0u, _hapticAmplitude, _hapticDuration);
-#if UNITY_EDITOR
-                Debug.Log($"[SpatialFeedback] Mando detectable '{col.tag}' encontrado por OverlapSphere. Pulso háptico enviado.");
-#endif
+                InputDevice device = _cachedDevicesBuffer[0];
+                if (device.TryGetHapticCapabilities(out HapticCapabilities capabilities) && capabilities.supportsImpulse)
+                {
+                    device.SendHapticImpulse(0u, _hapticAmplitude, _hapticDuration);
+                }
             }
         }
     }
-
-#if UNITY_EDITOR
-    private void Update()
-    {
-        // El test de teclado/mando ahora llama directamente a la función limpia
-        if (OVRInput.GetDown(_testControllerButton, _testControllerActive))
-        {
-            Debug.Log($"[SpatialFeedbackActuator] Testeo activado en {name} usando el botón {_testControllerButton}");
-            TriggerFeedback();
-        }
-    }
-
-    // Dibuja el radio del radar en la ventana de Scene de Unity para calibrar la distancia fácil
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, _radarRadius);
-    }
-#endif
 }

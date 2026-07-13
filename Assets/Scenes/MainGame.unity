@@ -1712,8 +1712,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &50451128 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -5365,8 +5363,6 @@ MonoBehaviour:
   _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!1 &281124958
 GameObject:
   m_ObjectHideFlags: 0
@@ -12438,8 +12434,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &617584662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -13196,8 +13190,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &667312766 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4105429012513284430, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -14846,8 +14838,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &760525720 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -17723,8 +17713,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &884728051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -17736,6 +17724,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c65dbd385390d40b4e1d96de2212b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnapObjectiveBridge
+--- !u!1 &886266911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 886266912}
+  - component: {fileID: 886266913}
+  m_Layer: 9
+  m_Name: ProximityRadar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &886266912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886266911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007214119}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &886266913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886266911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365de3c709af7754faed9cb521770173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRProximityRadar
+  _radarRadius: 4
+  _scanInterval: 0.2
+  _interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2112
 --- !u!1001 &889552231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18116,8 +18153,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &900105393 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -19231,7 +19266,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5209062467779649112, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+    - {fileID: 8832442757309679523, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+    - {fileID: 5836070943870020046, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19780,8 +19818,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &974128501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20273,6 +20309,7 @@ Transform:
   m_Children:
   - {fileID: 1248005661}
   - {fileID: 1750840333}
+  - {fileID: 886266912}
   m_Father: {fileID: 1327702249}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1007214120
@@ -22745,8 +22782,6 @@ MonoBehaviour:
   _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!4 &1092615971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4145323343707248083, guid: 92fbe46b3e91e5e46b5ce5af6fc801c6, type: 3}
@@ -25278,8 +25313,6 @@ MonoBehaviour:
   _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!1001 &1225422291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25406,8 +25439,6 @@ MonoBehaviour:
   _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!1 &1230664143
 GameObject:
   m_ObjectHideFlags: 0
@@ -27640,7 +27671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRFPSCounter
   fpsText: {fileID: 1750840334}
-  refreshRate: 0.2
+  refreshRate: 0.3
 --- !u!1 &1299973037
 GameObject:
   m_ObjectHideFlags: 0
@@ -33088,8 +33119,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &1500992035 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -39718,8 +39747,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!114 &1807592820 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446562487299238165, guid: d85901b6420acdb46b588cc8f0bd2cc4, type: 3}
@@ -44355,8 +44382,6 @@ MonoBehaviour:
   _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!4 &2009494823
 Transform:
   m_ObjectHideFlags: 0
@@ -45025,8 +45050,6 @@ MonoBehaviour:
   _radarRadius: 1.5
   _hapticDuration: 0.2
   _hapticAmplitude: 0.5
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!4 &2033305875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8bb7f73ce3ee044d89e5ce2c0dbc5cb, type: 3}
@@ -48138,8 +48161,6 @@ MonoBehaviour:
   _radarRadius: 3
   _hapticDuration: 0.6
   _hapticAmplitude: 1
-  _testControllerButton: 0
-  _testControllerActive: 0
 --- !u!1001 &6163652882821637705
 PrefabInstance:
   m_ObjectHideFlags: 0
