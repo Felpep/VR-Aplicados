@@ -1,11 +1,6 @@
 using UnityEngine;
 using Oculus.Interaction;
 
-/// <summary>
-/// Resorte procedimental aditivo que registra la pose local del hueso.
-/// Si la cabeza se estira más allá de un umbral máximo, fuerza al SDK de Meta
-/// a cancelar el agarre de inmediato.
-/// </summary>
 public class SpringProceduralBone : MonoBehaviour
 {
     [Header("Spring Physics")]
@@ -13,7 +8,6 @@ public class SpringProceduralBone : MonoBehaviour
     [SerializeField] private float _damping = 10f;
 
     [Header("VR Limits (Escape de Agarre)")]
-    [Tooltip("Distancia máxima en metros locales que el jugador puede estirar la cabeza antes de que se le safe de la mano.")]
     [SerializeField] private float _maxStretchDistance = 0.45f;
 
     private Vector3 _initialLocalPosition;
@@ -28,29 +22,27 @@ public class SpringProceduralBone : MonoBehaviour
     private GrabInteractable _grabInteractable;
     private bool _isBeingHeld;
 
+    // OPTIMIZACIÓN CORE: Umbral al cuadrado precargado en RAM para evitar raíces cuadradas (Sqrt)
+    private float _maxStretchDistanceSqr;
+
     private void Awake()
     {
         _initialLocalPosition = transform.localPosition;
         _initialLocalRotation = transform.localRotation;
-
-        // Cacheamos dinámicamente la vista interactiva de Meta
         _grabInteractable = GetComponent<GrabInteractable>();
+
+        _maxStretchDistanceSqr = _maxStretchDistance * _maxStretchDistance;
     }
 
     private void Update()
     {
-        // Si no está agarrada, no perdemos ciclos de CPU midiendo distancias
         if (!_isBeingHeld || _grabInteractable == null) return;
 
-        // Calculamos qué tanto se alejó la posición local actual del centro nativo
-        float currentDistance = Vector3.Distance(transform.localPosition, _initialLocalPosition);
+        // OPTIMIZACIÓN MATEMÁTICA: Resta plana de vectores midiendo la magnitud al cuadrado
+        Vector3 offset = transform.localPosition - _initialLocalPosition;
 
-        // Si superó el límite elástico de la oficina, obligamos a Meta a soltarlo
-        if (currentDistance > _maxStretchDistance)
+        if (offset.sqrMagnitude > _maxStretchDistanceSqr)
         {
-#if UNITY_EDITOR
-            Debug.Log($"[SpringProceduralBone] Límite elástico roto ({currentDistance:F2}m). Forzando drop en {name}.");
-#endif
             ForceMetaRelease();
         }
     }
@@ -59,15 +51,17 @@ public class SpringProceduralBone : MonoBehaviour
     {
         if (_isBeingHeld) return;
 
+        float dt = Time.deltaTime;
+
         Vector3 posSpringForce = -_stiffness * _posOffset;
         Vector3 posDampingForce = -_damping * _posVelocity;
-        _posVelocity += (posSpringForce + posDampingForce) * Time.deltaTime;
-        _posOffset += _posVelocity * Time.deltaTime;
+        _posVelocity += (posSpringForce + posDampingForce) * dt;
+        _posOffset += _posVelocity * dt;
 
         Vector3 rotSpringForce = -_stiffness * _rotOffset;
         Vector3 rotDampingForce = -_damping * _rotVelocity;
-        _rotVelocity += (rotSpringForce + rotDampingForce) * Time.deltaTime;
-        _rotOffset += _rotVelocity * Time.deltaTime;
+        _rotVelocity += (rotSpringForce + rotDampingForce) * dt;
+        _rotOffset += _rotVelocity * dt;
 
         transform.localPosition = _initialLocalPosition + _posOffset;
         transform.localRotation = _initialLocalRotation * Quaternion.Euler(_rotOffset);
@@ -75,15 +69,11 @@ public class SpringProceduralBone : MonoBehaviour
 
     private void ForceMetaRelease()
     {
-        // En el Interaction SDK de Meta, pasar el interactable por su máquina de estados 
-        // a 'Disabled' o simular el deseleccionado cancela el tracking de la mano de forma segura
-        if (_grabInteractable is GrabInteractable metaGrab)
+        if (_grabInteractable != null)
         {
-            metaGrab.Disable();
-            metaGrab.Enable(); // Lo volvemos a prender inmediatamente para que quede listo para el próximo toque
+            _grabInteractable.Disable();
+            _grabInteractable.Enable();
         }
-
-        // Ejecutamos la lógica normal de retorno elástico
         OnGrabRelease();
     }
 
@@ -106,10 +96,11 @@ public class SpringProceduralBone : MonoBehaviour
         _isBeingHeld = false;
 
         _posOffset = transform.localPosition - _initialLocalPosition;
-        _rotOffset = (Quaternion.Inverse(_initialLocalRotation) * transform.localRotation).eulerAngles;
 
-        if (_rotOffset.x > 180) _rotOffset.x -= 360;
-        if (_rotOffset.y > 180) _rotOffset.y -= 360;
-        if (_rotOffset.z > 180) _rotOffset.z -= 360;
+        // Optimización de rotación: Evitamos instanciaciones de vectores dinámicos redundantes
+        Vector3 rawAngles = (Quaternion.Inverse(_initialLocalRotation) * transform.localRotation).eulerAngles;
+        _rotOffset.x = rawAngles.x > 180 ? rawAngles.x - 360 : rawAngles.x;
+        _rotOffset.y = rawAngles.y > 180 ? rawAngles.y - 360 : rawAngles.y;
+        _rotOffset.z = rawAngles.z > 180 ? rawAngles.z - 360 : rawAngles.z;
     }
 }

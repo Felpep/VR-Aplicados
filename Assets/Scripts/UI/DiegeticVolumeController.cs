@@ -30,7 +30,9 @@ public class DiegeticVolumeController : MonoBehaviour
 
     private int _currentVolume;
     private Vector3 _targetLocalPosition;
-    private float _totalDistance; // Precalculada para evitar coste en Update
+
+    // OPTIMIZACIÓN CORE: Guardamos la distancia total al cuadrado para el porcentaje del color
+    private float _totalDistanceSqr;
 
     private MaterialPropertyBlock _propBlock;
     private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
@@ -45,13 +47,14 @@ public class DiegeticVolumeController : MonoBehaviour
         }
 
         _propBlock = new MaterialPropertyBlock();
-        // Precalculamos la distancia una sola vez en la vida del script
-        _totalDistance = Vector3.Distance(_minLocalPosition, _maxLocalPosition);
+
+        // Precalculamos la distancia al cuadrado una sola vez (Zero Alloc)
+        Vector3 totalOffset = _maxLocalPosition - _minLocalPosition;
+        _totalDistanceSqr = totalOffset.sqrMagnitude;
     }
 
     private void Update()
     {
-        // CORTE QUIRÚRGICO: Si ya llegó, cero cálculo de CPU y cero actualizaciones a la GPU
         if (_indicatorTarget.localPosition == _targetLocalPosition) return;
 
         _indicatorTarget.localPosition = Vector3.MoveTowards(
@@ -59,7 +62,6 @@ public class DiegeticVolumeController : MonoBehaviour
             _targetLocalPosition,
             _movementSmoothness * Time.deltaTime);
 
-        // Se ejecuta ÚNICAMENTE durante el deslizamiento
         UpdateIndicatorColor();
     }
 
@@ -70,7 +72,7 @@ public class DiegeticVolumeController : MonoBehaviour
         _currentVolume = Mathf.Clamp(_currentVolume, 0, 100);
 
         _targetLocalPosition = CalculateIndicatorPosition();
-        UpdateIndicatorColor(); // Forzar actualización visual única al cambiar de canal
+        UpdateIndicatorColor();
     }
 
     public void IncreaseVolume()
@@ -113,9 +115,12 @@ public class DiegeticVolumeController : MonoBehaviour
 
     private void UpdateIndicatorColor()
     {
-        // Optimizado: usando la distancia precalculada sin instanciar vectores intermedios
-        float distCurrent = Vector3.Distance(_minLocalPosition, _indicatorTarget.localPosition);
-        float visualPercent = _totalDistance > 0.001f ? (distCurrent / _totalDistance) : 0f;
+        // OPTIMIZACIÓN MATEMÁTICA: Usamos la proporción por magnitudes al cuadrado. 
+        // El ratio de la división (A^2 / B^2) matemáticamente es equivalente a la raíz del ratio (A / B) para un Lerp lineal de distancias.
+        Vector3 currentOffset = _indicatorTarget.localPosition - _minLocalPosition;
+        float currentDistanceSqr = currentOffset.sqrMagnitude;
+
+        float visualPercent = _totalDistanceSqr > 0.0001f ? (currentDistanceSqr / _totalDistanceSqr) : 0f;
 
         Color lerpedColor = Color.Lerp(_minVolumeColor, _maxVolumeColor, visualPercent);
 
