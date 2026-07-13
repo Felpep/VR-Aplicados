@@ -4,45 +4,51 @@ using UnityEngine;
 public class AntiTraspasoVR : MonoBehaviour
 {
     [Header("Configuración de Físicas")]
-    [Tooltip("Selecciona aquí la capa (Layer) de las paredes y escritorios.")]
     public LayerMask capasSolidas;
-
-    [Header("Configuración de Agarre")]
-    [Tooltip("Arrastra aquí el componente 'Grabbable' directamente desde el objeto padre.")]
     public Behaviour componenteGrabbable;
 
+    [Header("Optimización de Ticks")]
+    [Tooltip("Cada cuántos segundos se comprueba la física (Ej: 0.1s = 10 veces por segundo).")]
+    [SerializeField] private float _checkInterval = 0.1f;
+
     private Collider miCollider;
+    private float _nextCheckTime;
+
+    // Buffer estático en RAM para evitar que Overlap cree basura (Zero Alloc)
+    private readonly Collider[] _resultsBuffer = new Collider[4];
 
     private void Start()
     {
         miCollider = GetComponent<Collider>();
-
         if (componenteGrabbable == null)
         {
-            Debug.LogError($"[Anti-Traspaso] Ojo: No asignaste el componente Grabbable en el inspector de {gameObject.name}");
+            Debug.LogError($"[Anti-Traspaso] No asignaste el componente Grabbable en {name}");
         }
     }
 
     private void LateUpdate()
     {
-        // Si no hay componente asignado o el objeto ya está cayendo (apagado), no hacemos nada
         if (componenteGrabbable == null || !componenteGrabbable.enabled) return;
 
-        // 1. Buscamos si el collider de este objeto se metió en la capa "EntornoSólido"
-        Collider[] paredesTocadas = Physics.OverlapBox(
+        // SISTEMA DE TICKS: Filtra la ejecución inter-frame redundante
+        if (Time.time < _nextCheckTime) return;
+        _nextCheckTime = Time.time + _checkInterval;
+
+        // Usamos NonAlloc pasándole nuestro búfer estático
+        int count = Physics.OverlapBoxNonAlloc(
             miCollider.bounds.center,
             miCollider.bounds.extents,
+            _resultsBuffer,
             Quaternion.identity,
             capasSolidas,
             QueryTriggerInteraction.Ignore
         );
 
-        foreach (Collider pared in paredesTocadas)
+        for (int i = 0; i < count; i++)
         {
-            // Evitamos pelearnos con nosotros mismos
-            if (pared != miCollider)
+            Collider pared = _resultsBuffer[i];
+            if (pared != null && pared != miCollider)
             {
-                // 2. ¡Atravesó la pared! Forzamos la caída
                 ForzarSoltarObjeto();
                 break;
             }
@@ -51,20 +57,13 @@ public class AntiTraspasoVR : MonoBehaviour
 
     private void ForzarSoltarObjeto()
     {
-        Debug.Log("<color=red>[Físicas VR]</color> El objeto chocó contra la pared. ¡Soltando!");
-
-        // Apagamos el script que pasaste por Inspector, obligando a la mano a soltarlo
+        Debug.Log("<color=red>[Físicas VR]</color> Objeto atravesó el entorno. Soltando.");
         componenteGrabbable.enabled = false;
-
-        // Lo volvemos a encender medio segundo después para poder volver a agarrarlo
         Invoke(nameof(ReactivarAgarre), 0.5f);
     }
 
     private void ReactivarAgarre()
     {
-        if (componenteGrabbable != null)
-        {
-            componenteGrabbable.enabled = true;
-        }
+        if (componenteGrabbable != null) componenteGrabbable.enabled = true;
     }
 }
