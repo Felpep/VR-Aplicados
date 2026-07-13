@@ -3,7 +3,17 @@ guid: 2da786229ba5dfd4abe55eee2a366f05
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall socket black
+    second: {fileID: 2100000, guid: cd60e8e32fbb2cb45bbf9c6ee0f84340, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall socket white
+    second: {fileID: 2100000, guid: bb72fa9e2556475428a5a7772e53195f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,8 +51,8 @@ ModelImporter:
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
