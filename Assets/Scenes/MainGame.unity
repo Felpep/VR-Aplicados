@@ -1812,6 +1812,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e081ce8835c3b84683dc107246a35e1, type: 3}
+--- !u!1 &58848053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 905397462143736000, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+  m_PrefabInstance: {fileID: 950147013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &58848055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8643655040143400054, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+  m_PrefabInstance: {fileID: 950147013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58848053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a7676b01585ce43908639a27765dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.HandGrab.HandGrabInteractable
+--- !u!114 &58848056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4287733896474400720, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+  m_PrefabInstance: {fileID: 950147013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58848053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.GrabInteractable
+--- !u!114 &58848057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6421618245449189776, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+  m_PrefabInstance: {fileID: 950147013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58848053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Grabbable
+--- !u!114 &58848061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58848053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3be4d325abfb5542a47fc9a85d12c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRInteractableProxy
+  _grabbable: {fileID: 58848057}
+  _grabInteractable: {fileID: 58848056}
+  _extraComponents:
+  - {fileID: 58848055}
 --- !u!1 &61280360 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1939242410188312703, guid: e6ff8465ccfc4d446ac079e04acf109a, type: 3}
@@ -3557,6 +3611,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5388624719327353857, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1798920887}
+    - targetCorrespondingSourceObject: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1799101086}
   m_SourcePrefab: {fileID: 100100000, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
 --- !u!1 &180394688
 GameObject:
@@ -5277,6 +5334,84 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1742583388345339209, guid: 7bab00fe5f692cb4192165d9664c7655, type: 3}
   m_PrefabInstance: {fileID: 610064926}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &293321305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 1345983437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &293321311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6404416035317630204, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 1345983437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293321305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.GrabInteractable
+--- !u!114 &293321312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3692796713355126972, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 1345983437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293321305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a7676b01585ce43908639a27765dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.HandGrab.HandGrabInteractable
+--- !u!114 &293321313 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055061093313824317, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 1345983437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293321305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Grabbable
+--- !u!114 &293321314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4786259708099140965, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 1345983437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293321305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54372153e17d8fb42885c9bda723311a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCReactionComponent
+--- !u!114 &293321315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7000258361666578159, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 1345983437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293321305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e08876cb7ae10f4896281d516bb2f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringProceduralBone
+--- !u!114 &293321316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293321305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3be4d325abfb5542a47fc9a85d12c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRInteractableProxy
+  _grabbable: {fileID: 293321313}
+  _grabInteractable: {fileID: 293321311}
+  _extraComponents:
+  - {fileID: 293321312}
+  - {fileID: 293321314}
+  - {fileID: 293321315}
 --- !u!1 &297335856
 GameObject:
   m_ObjectHideFlags: 0
@@ -17226,6 +17361,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2087702957140901376, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
     m_RemovedGameObjects: []
@@ -17240,6 +17379,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5388624719327353857, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2647431}
+    - targetCorrespondingSourceObject: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1200291401}
   m_SourcePrefab: {fileID: 100100000, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
 --- !u!1 &895883837
 GameObject:
@@ -18404,6 +18546,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1553567383}
     m_Modifications:
+    - target: {fileID: 905397462143736000, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1005771809447850328, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0177
@@ -18470,7 +18616,10 @@ PrefabInstance:
     - {fileID: 5836070943870020046, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 905397462143736000, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 58848061}
   m_SourcePrefab: {fileID: 100100000, guid: 17e66d03dc60c5143ac48ada98b6649a, type: 3}
 --- !u!1 &951812174
 GameObject:
@@ -23711,6 +23860,84 @@ Transform:
   - {fileID: 1919413790}
   m_Father: {fileID: 431631243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1200291390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 891919053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1200291396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6404416035317630204, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 891919053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200291390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.GrabInteractable
+--- !u!114 &1200291397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3692796713355126972, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 891919053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200291390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a7676b01585ce43908639a27765dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.HandGrab.HandGrabInteractable
+--- !u!114 &1200291398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055061093313824317, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 891919053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200291390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Grabbable
+--- !u!114 &1200291399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4786259708099140965, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 891919053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200291390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54372153e17d8fb42885c9bda723311a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCReactionComponent
+--- !u!114 &1200291400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7000258361666578159, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 891919053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200291390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e08876cb7ae10f4896281d516bb2f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringProceduralBone
+--- !u!114 &1200291401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200291390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3be4d325abfb5542a47fc9a85d12c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRInteractableProxy
+  _grabbable: {fileID: 1200291398}
+  _grabInteractable: {fileID: 1200291396}
+  _extraComponents:
+  - {fileID: 1200291397}
+  - {fileID: 1200291400}
+  - {fileID: 1200291399}
 --- !u!4 &1206121720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2442720073837945669, guid: 64af665d39c85f04194d919c5ab4ee40, type: 3}
@@ -27260,6 +27487,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5388624719327353857, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 589121055}
+    - targetCorrespondingSourceObject: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 293321316}
   m_SourcePrefab: {fileID: 100100000, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
 --- !u!1001 &1354615848
 PrefabInstance:
@@ -36770,6 +37000,84 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1599274, y: 2.3054683, z: 1.2735963}
   m_Center: {x: 0.14913177, y: 0.6527356, z: -0.13679844}
+--- !u!1 &1799101075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8461832167987463787, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 178123617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1799101081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6404416035317630204, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 178123617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799101075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.GrabInteractable
+--- !u!114 &1799101082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3692796713355126972, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 178123617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799101075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a7676b01585ce43908639a27765dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.HandGrab.HandGrabInteractable
+--- !u!114 &1799101083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055061093313824317, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 178123617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799101075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Grabbable
+--- !u!114 &1799101084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4786259708099140965, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 178123617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799101075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54372153e17d8fb42885c9bda723311a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCReactionComponent
+--- !u!114 &1799101085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7000258361666578159, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+  m_PrefabInstance: {fileID: 178123617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799101075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e08876cb7ae10f4896281d516bb2f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringProceduralBone
+--- !u!114 &1799101086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799101075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3be4d325abfb5542a47fc9a85d12c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRInteractableProxy
+  _grabbable: {fileID: 1799101083}
+  _grabInteractable: {fileID: 1799101081}
+  _extraComponents:
+  - {fileID: 1799101082}
+  - {fileID: 1799101084}
+  - {fileID: 1799101085}
 --- !u!1001 &1802851378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41122,6 +41430,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 574735769288017535, guid: dc997ef606a418d4aa657175a47aba3e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1231155185755925864, guid: dc997ef606a418d4aa657175a47aba3e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -44873,6 +45185,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5073630359111342199, guid: b9172c5d3f676b1468f1decdd9103653, type: 3}
+      propertyPath: '_extraComponents.Array.data[3]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 649991218187999482, guid: b9172c5d3f676b1468f1decdd9103653, type: 3}
       propertyPath: m_Name
       value: PencilHolder_Empty
