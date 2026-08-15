@@ -12,6 +12,7 @@ public class ProgressionManager : MonoBehaviour
     private void Awake()
     {
         _completedObjectiveIDs = new HashSet<string>();
+        
     }
 
     private void OnEnable()

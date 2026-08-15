@@ -72,6 +72,11 @@ public class ModularCollisionObjective : MonoBehaviour
 
     private IEnumerator SnapAndProcessObjective(Collider other)
     {
+        // 1. Cacheamos las referencias de inmediato.
+        // Acceder a 'other' después del yield es lo que causa el crasheo.
+        GameObject collidedObj = other.gameObject;
+        GameObject rootObject = other.transform.parent != null ? other.transform.parent.gameObject : collidedObj;
+
         Rigidbody rb = other.GetComponent<Rigidbody>();
         Grabbable grabbable = other.GetComponent<Grabbable>();
 
@@ -84,21 +89,30 @@ public class ModularCollisionObjective : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
 
-        GameObject rootObject = other.transform.parent != null ? other.transform.parent.gameObject : other.gameObject;
-
         rootObject.transform.position = snapPoint.position;
         rootObject.transform.rotation = snapPoint.rotation;
         rootObject.transform.SetParent(snapPoint);
 
+        // 2. La corrutina se pausa aquí (ej. 1 segundo).
         yield return _cachedWaitInstruction;
 
+        // --- 3. BLINDAJE CRÍTICO ---
+        // Si el script de sonido (o cualquier otro) destruyó el objeto mientras 
+        // esperábamos, cancelamos el proceso silenciosamente sin tirar error.
+        if (rootObject == null || collidedObj == null)
+        {
+            yield break; // Aborta la corrutina aquí mismo
+        }
+        // ---------------------------
+
+        // 4. Si el objeto sobrevivió a la pausa, seguimos con normalidad.
         rootObject.transform.SetParent(null);
 
-        // Disparamos las consecuencias lúdicas locales antes de reciclar la memoria
-        OnActionTriggered?.Invoke(other.gameObject);
+        // Disparamos las consecuencias (ej. sumar puntaje) pasándole el objeto seguro
+        OnActionTriggered?.Invoke(collidedObj);
         NotifyMaster();
 
-        // AUTO-RECICLAJE: En vez de llamar a Destroy, devolvemos la raíz al pooler
+        // AUTO-RECICLAJE
         RecycleDetectedObject(rootObject);
     }
 

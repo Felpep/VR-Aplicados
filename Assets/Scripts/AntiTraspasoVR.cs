@@ -22,7 +22,7 @@ public class AntiTraspasoVR : MonoBehaviour
         miCollider = GetComponent<Collider>();
         if (componenteGrabbable == null)
         {
-            Debug.LogError($"[Anti-Traspaso] No asignaste el componente Grabbable en {name}");
+           // Debug.LogError($"[Anti-Traspaso] No asignaste el componente Grabbable en {name}");
         }
     }
 
