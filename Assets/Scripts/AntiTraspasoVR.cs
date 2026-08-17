@@ -57,7 +57,7 @@ public class AntiTraspasoVR : MonoBehaviour
 
     private void ForzarSoltarObjeto()
     {
-        Debug.Log("<color=red>[Físicas VR]</color> Objeto atravesó el entorno. Soltando.");
+        //Debug.Log("<color=red>[Físicas VR]</color> Objeto atravesó el entorno. Soltando.");
         componenteGrabbable.enabled = false;
         Invoke(nameof(ReactivarAgarre), 0.5f);
     }
