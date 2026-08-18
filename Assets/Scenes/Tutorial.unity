@@ -13877,8 +13877,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.61421025, y: 0.7290746, z: 0.21426971}
-  m_Center: {x: 0.000000014901167, y: 0.3645373, z: 0.009703878}
+  m_Size: {x: 0.61421025, y: 0.36851752, z: 0.21426961}
+  m_Center: {x: -4.6298164e-16, y: 0.18425876, z: 0.009703882}
 --- !u!1 &607190498
 GameObject:
   m_ObjectHideFlags: 0
@@ -38140,7 +38140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861841966568303383, guid: b904436a02712c0438bb1e8413121298, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8761434
+      value: 1.475
       objectReference: {fileID: 0}
     - target: {fileID: 7861841966568303383, guid: b904436a02712c0438bb1e8413121298, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38914,8 +38914,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.61421025, y: 0.7290746, z: 0.21426971}
-  m_Center: {x: 0.000000014901167, y: 0.3645373, z: 0.009703878}
+  m_Size: {x: 0.61421025, y: 0.37163413, z: 0.21426971}
+  m_Center: {x: 1.2028656e-15, y: 0.18581706, z: 0.009703882}
 --- !u!1 &1823068125
 GameObject:
   m_ObjectHideFlags: 0
