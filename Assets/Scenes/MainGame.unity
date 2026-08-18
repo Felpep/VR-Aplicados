@@ -37150,6 +37150,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1291393243}
     - target: {fileID: 3824500220507722703, guid: 2f9d92d82efa57648a7d355f450e3492, type: 3}
+      propertyPath: sceneName
+      value: MainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824500220507722703, guid: 2f9d92d82efa57648a7d355f450e3492, type: 3}
       propertyPath: fadeCanvas
       value: 
       objectReference: {fileID: 1193229109}

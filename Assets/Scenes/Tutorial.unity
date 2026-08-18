@@ -24612,7 +24612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1416380744096707489, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.662
+      value: -1.171
       objectReference: {fileID: 0}
     - target: {fileID: 1416380744096707489, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24620,7 +24620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1416380744096707489, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.344
+      value: -41.247
       objectReference: {fileID: 0}
     - target: {fileID: 1416380744096707489, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24657,7 +24657,8 @@ PrefabInstance:
     - target: {fileID: 7891330966853804144, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_text
       value: "En Office Prankster, deber\xE1s evitar trabajar a toda costa, y molestar
-        a tus compa\xF1eros  para superar el d\xEDa de trabajo.\n"
+        a tus compa\xF1eros  para superar el d\xEDa de trabajo.\n\nUtiliza el  stick
+        izquierdo para mover la c\xE1mara.\n\nUtiliza el stick derecho para moverte.\n\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 7891330966853804144, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_fontSize
@@ -40804,7 +40805,9 @@ PrefabInstance:
     - target: {fileID: 7891330966853804144, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_text
       value: "Uno de tus objetivos ser\xE1 tirar a la basura los objetos de tus compa\xF1eros.
-        \n\nSolo estos objetos cuentan para la misi\xF3n"
+        \n\nSolo estos objetos cuentan para la misi\xF3n.\n\nUtiliza el gatillo de
+        agarre para interactuar con los objetos.\n\nPresiona el stick derecho para
+        agacharte."
       objectReference: {fileID: 0}
     - target: {fileID: 7891330966853804144, guid: fa5d4e64416b57548a3e764d1f2cb1c9, type: 3}
       propertyPath: m_fontSize
@@ -43958,7 +43961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414843863964572891, guid: 040ae70d5c7969a43a7de392c6a9b956, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4414843863964572891, guid: 040ae70d5c7969a43a7de392c6a9b956, type: 3}
       propertyPath: m_StaticEditorFlags
