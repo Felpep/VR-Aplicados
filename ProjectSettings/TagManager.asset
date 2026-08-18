@@ -10,6 +10,7 @@ TagManager:
   - FxTemporaire
   - Controls
   - Pared
+  - ObjectToStole
   layers:
   - Default
   - TransparentFX
