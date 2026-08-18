@@ -12252,7 +12252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TestAssembly::PlayerZoneTrigger
   playerHead: {fileID: 0}
   zone: {fileID: 503222621}
-  requiredTimeInside: 0
+  requiredTimeInside: 2
   triggerOnlyOnce: 1
   debugLogs: 0
   onPlayerEnter:
@@ -12288,7 +12288,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -29957,7 +29957,7 @@ Transform:
   m_GameObject: {fileID: 1294930859}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6974377, z: -0, w: 0.7166455}
-  m_LocalPosition: {x: -4.11, y: 0.87, z: -22.13}
+  m_LocalPosition: {x: -7.11, y: 0.87, z: -6.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
