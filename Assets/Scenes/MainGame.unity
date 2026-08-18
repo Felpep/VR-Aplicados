@@ -10045,7 +10045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4595308751303236593, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4595308751303236593, guid: ef01ca52d2a35364a98e9b0d986eb4c0, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20554,6 +20554,7 @@ MonoBehaviour:
   _stolenObjectsLayer:
     serializedVersion: 2
     m_Bits: 2048
+  _destroyOnEnter: 1
 --- !u!114 &1223367036
 MonoBehaviour:
   m_ObjectHideFlags: 0
